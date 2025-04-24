@@ -1,0 +1,4 @@
+gtfs-realtime-bindings==0.0.6
+protobuf==4.25.1
+pyspark==3.5.1
+requests
