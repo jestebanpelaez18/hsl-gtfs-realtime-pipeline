@@ -27,10 +27,25 @@ def save_feed(data, feed_type, output_dir):
 
     print(f"✅ Saved {len(data)} records to {file_path}")
 
-# --- Run the extractor
-vehicle_position_url = 'https://realtime.hsl.fi/realtime/vehicle-positions/v2/hsl'
+def extract_and_save(url, feed_type, output_dir):
+    feed = fetch_gtfs_feed(url)
+    data = parse_feed(feed)
+    save_feed(data, feed_type, output_dir)
+
+# Run the extractor
 output_dir = "../data/raw"
 
-feed = fetch_gtfs_feed(vehicle_position_url)
-data = parse_feed(feed)
-save_feed(data, "vehicle_positions", output_dir)
+# Vehicle Positions
+extract_and_save(
+    url='https://realtime.hsl.fi/realtime/vehicle-positions/v2/hsl',
+    feed_type='vehicle_positions',
+    output_dir=output_dir
+)
+
+# Trip Updates
+extract_and_save(
+    url='https://realtime.hsl.fi/realtime/trip-updates/v2/hsl',
+    feed_type='trip_updates',
+    output_dir=output_dir
+)
+
