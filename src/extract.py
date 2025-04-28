@@ -7,10 +7,14 @@ from datetime import datetime
 
 def fetch_gtfs_feed(url):
     ''' Fetches GTFS Realtime feed from HSL and parses it into a FeedMessage '''
-    response = requests.get(url)
-    feed = gtfs_realtime_pb2.FeedMessage()
-    feed.ParseFromString(response.content)
-    return feed
+    try:
+        response = requests.get(url)
+        feed = gtfs_realtime_pb2.FeedMessage()
+        feed.ParseFromString(response.content)
+        return feed
+    except Exception as e:
+        print("Error fetching URL", {e})
+        return None
 
 def parse_feed(feed):
     ''' Parses a GTFS FeedMessage into a list of dicts using MessageToDict '''
@@ -35,17 +39,15 @@ def extract_and_save(url, feed_type, output_dir):
 # Run the extractor
 output_dir = "../data/raw"
 
-# Vehicle Positions
-extract_and_save(
-    url='https://realtime.hsl.fi/realtime/vehicle-positions/v2/hsl',
-    feed_type='vehicle_positions',
-    output_dir=output_dir
-)
+FEED_URL = {
+    "vehicle_position": 'https://realtime.hsl.fi/realtime/vehicle-positions/v2/hsl',
+    "trip_updates": 'https://realtime.hsl.fi/realtime/trip-updates/v2/hsl'
+}
 
-# Trip Updates
-extract_and_save(
-    url='https://realtime.hsl.fi/realtime/trip-updates/v2/hsl',
-    feed_type='trip_updates',
-    output_dir=output_dir
-)
+for feed_type, url in FEED_URL.items():
+    print(f"extracting feed: {feed_type}")
+    if feed := fetch_gtfs_feed(url):
+        data = parse_feed(feed)
+        save_feed(data, feed_type, output_dir)
+
 
