@@ -16,4 +16,8 @@ logs:
 	@echo "Tailing logs..."
 	docker compose logs -f
 
-.PHONY: all clean fclean re logs
+trigger:
+	@echo "Triggering DAG: gtfs_realtime_dag"
+	docker compose exec airflow-webserver airflow dags trigger gtfs_realtime_dag
+
+.PHONY: all clean fclean re logs trigger
