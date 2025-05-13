@@ -37,6 +37,7 @@ The goal is to extract, transform, and load (ETL) GTFS Realtime data to enable i
 
 ## Project Structure
 
+```bash
 hsl-gtfs-realtime-pipeline/
 ├── dags/              # Airflow DAGs
 ├── src/               # Core ETL logic (fetch → parse → save)
@@ -45,7 +46,7 @@ hsl-gtfs-realtime-pipeline/
 ├── docker-compose.yml
 ├── requirements.txt
 └── Makefile
-
+```
 ---
 
 ## Installation
