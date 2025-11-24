@@ -1,33 +1,49 @@
 # HSL GTFS Realtime Pipeline
 
-This project is a data engineering pipeline built with **Apache Airflow** and **PySpark** to process real-time public transportation data from **HSL (Helsinki Regional Transport Authority)**.
+This project is a data engineering pipeline built with **Apache Airflow**, **PySpark**, and **Databricks** to process real-time public transportation data from **HSL (Helsinki Regional Transport Authority)**.
 
-The goal is to extract, transform, and load (ETL) GTFS Realtime data to enable insights about public transit patterns, vehicle delays, and overall system performance.
+The goal is to extract, clean, transform, and load (ETL) GTFS Realtime data to enable insights about public transit patterns, vehicle delays, and system performance.  
+The pipeline follows a modern data lake architecture using **Delta Lake**.
 
 ---
 
 ## Project Overview
 
 - **Data Source**: [HSL Open Data](https://www.hsl.fi/en/open-data)
-- **Pipeline Tools**: Apache Airflow, PySpark
-- **Format**: GTFS Realtime (Protocol Buffers)
-- **Purpose**: Learn and practice real-world data engineering using transit data
+- **Pipeline Tools**: Apache Airflow, PySpark, Databricks, Delta Lake
+- **Format**: GTFS Realtime (Protocol Buffers → JSON)
+- **Purpose**: Learn and practice real-world data engineering using public transit data
 
 ## Features
 
-- Extracts data from HSL's GTFS Realtime feeds:
-  - ✅ Vehicle Positions
-  - ✅ Trip Updates
-- Parses Protobuf into JSON using `gtfs-realtime-bindings`
-- Stores clean data in `data/raw/`
-- Fully automated with Apache Airflow
-- Easily extendable (e.g. to Service Alerts, PySpark transforms)
+### Extraction (Airflow)
+- Fetches GTFS Realtime feeds:
+  - **Vehicle Positions**
+  - **Trip Updates**
+- Parses Protobuf (`.pb`) into JSON using `gtfs-realtime-bindings`
+- Stores raw data under `data/raw/`
+- Containerized with **Docker + Docker Compose**
+
+### Transformation (Databricks + PySpark + Delta Lake)
+A dedicated Databricks transformation layer processes the extracted JSON:
+
+- Reads GTFS-Realtime JSON into PySpark  
+- Extracts nested fields (`vehicle`, `trip`, `position`)  
+- Converts UNIX timestamps into proper Spark timestamps  
+- Cleans coordinates and removes duplicates  
+- Adds partitioning columns: `event_date` and `event_hour`  
+- Loads cleaned data into a **Delta Lake Silver table**  
+  - `hsl_demo.vehicle_positions_silver`  
+- Notebooks exported to the repository for reproducibility
 
 ---
 
 ## Tech Stack
 
 - **Apache Airflow**
+- **PySpark**
+- **Databricks (Free Edition)**
+- **Delta Lake**
 - **Docker & Docker Compose**
 - **Python 3.7+**
 - **gtfs-realtime-bindings**
@@ -39,10 +55,14 @@ The goal is to extract, transform, and load (ETL) GTFS Realtime data to enable i
 
 ```bash
 hsl-gtfs-realtime-pipeline/
-├── dags/              # Airflow DAGs
-├── src/               # Core ETL logic (fetch → parse → save)
-├── data/raw/          # Output JSON files
-├── docker/airflow/    # Dockerfile + entrypoint
+├── dags/                     # Airflow DAGs
+├── src/                      # Core extraction logic
+├── data/raw/                 # Raw GTFS data exported by Airflow
+├── databricks/               # PySpark notebooks (Delta Lake processing)
+│   └── 01_vehicle_positions_cleaning.ipynb
+├── docs/                     # Project documentation
+│   └── databricks_vehicle_positions.md
+├── docker/airflow/           # Airflow Dockerfile + entrypoint
 ├── docker-compose.yml
 ├── requirements.txt
 └── Makefile
@@ -91,11 +111,22 @@ Manually in the UI or run:
 ```bash
 make trigger
 ```
+
+### 6. Databricks Transformation Layer (Silver) 🥈
+
+The cleaned dataset is processed in Databricks using **PySpark** and stored as a **Delta Lake Silver table**.
+
+* Table:  `hsl_demo.vehicle_positions_silver` 
+* Partitioning: `event_date`, `event_hour` 
+* Format:  **Delta** 
+
+Notebooks are exported and version-controlled under `/databricks/`.
 ---
 
 ## Future Improvements
 
 * Add support for **Service Alerts** feed
-* Add PySpark transforms and analytics
+* Add Bronze and Gold layers (Delta Lake)
+* Integrate Azure Data Factory for orchestration.
 * Schedule with cron-like intervals (`*/5 * * * *`)
 * Export to database or cloud storage (Postgres, S3, BigQuery)
