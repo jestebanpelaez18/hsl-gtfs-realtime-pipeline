@@ -58,9 +58,7 @@ hsl-gtfs-realtime-pipeline/
 ├── requirements.txt
 └── Makefile
 ```
-
 ---
-
 
 ## Installation
 
