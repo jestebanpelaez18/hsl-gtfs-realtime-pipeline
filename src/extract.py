@@ -56,5 +56,5 @@ def run_all_feed(output_dir):
 
 # Only run when i execute the script
 if __name__ == "__main__":
-    output_dir = "/opt/airflow/data/raw"
+    output_dir = "../data/raw"
     run_all_feed(output_dir)

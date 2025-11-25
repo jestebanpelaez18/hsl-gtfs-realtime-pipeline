@@ -26,7 +26,7 @@ dag = DAG('gtfs_realtime_dag',
 
 # Extractor function: This gets the data from HSL API and format it to JSON
 def run_extractor():
-    output_dir = "/opt/airflow/data/raw"
+    output_dir = "../data/raw"
     run_all_feed(output_dir)
 
 
