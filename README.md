@@ -131,4 +131,4 @@ Notebooks are exported and version-controlled under `/databricks/`.
 * Add Bronze and Gold layers (Delta Lake)
 * Integrate Azure Data Factory for orchestration.
 * Schedule with cron-like intervals (`*/5 * * * *`)
-* Export to database or cloud storage (Postgres, S3, BigQuery)
+* Export to database or cloud storage (Postgres, S3)
