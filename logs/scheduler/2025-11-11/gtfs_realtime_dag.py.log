@@ -1,0 +1,383 @@
+[2025-11-11T18:55:39.319+0000] {processor.py:153} INFO - Started process (PID=185) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:55:39.320+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T18:55:39.321+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:55:39.321+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:55:40.041+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:55:40.212+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:55:40.212+0000] {manager.py:504} INFO - Created Permission View: can delete on DAG:gtfs_realtime_dag
+[2025-11-11T18:55:40.219+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:55:40.219+0000] {manager.py:504} INFO - Created Permission View: can edit on DAG:gtfs_realtime_dag
+[2025-11-11T18:55:40.223+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:55:40.223+0000] {manager.py:504} INFO - Created Permission View: can read on DAG:gtfs_realtime_dag
+[2025-11-11T18:55:40.224+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:55:40.223+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T18:55:40.233+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:55:40.233+0000] {dag.py:2711} INFO - Creating ORM DAG for gtfs_realtime_dag
+[2025-11-11T18:55:40.243+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:55:40.243+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-10T00:00:00+00:00, run_after=2025-11-11T00:00:00+00:00
+[2025-11-11T18:55:40.265+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.950 seconds
+[2025-11-11T18:56:10.882+0000] {processor.py:153} INFO - Started process (PID=196) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:56:10.883+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T18:56:10.884+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:56:10.884+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:56:10.959+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:56:10.987+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:56:10.987+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T18:56:11.020+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:56:11.019+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-10T00:00:00+00:00, run_after=2025-11-11T00:00:00+00:00
+[2025-11-11T18:56:11.029+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.152 seconds
+[2025-11-11T18:56:41.547+0000] {processor.py:153} INFO - Started process (PID=212) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:56:41.549+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T18:56:41.549+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:56:41.549+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:56:41.618+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:56:41.640+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:56:41.640+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T18:56:41.659+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:56:41.659+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T18:56:41.677+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.137 seconds
+[2025-11-11T18:57:12.121+0000] {processor.py:153} INFO - Started process (PID=222) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:57:12.124+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T18:57:12.126+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:57:12.126+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:57:12.204+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:57:12.242+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:57:12.242+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T18:57:12.263+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:57:12.262+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T18:57:12.274+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.161 seconds
+[2025-11-11T18:57:42.753+0000] {processor.py:153} INFO - Started process (PID=232) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:57:42.755+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T18:57:42.756+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:57:42.756+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:57:42.845+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:57:42.873+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:57:42.872+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T18:57:42.895+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:57:42.895+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T18:57:42.907+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.166 seconds
+[2025-11-11T18:58:13.292+0000] {processor.py:153} INFO - Started process (PID=242) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:58:13.295+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T18:58:13.297+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:58:13.296+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:58:13.381+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:58:13.415+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:58:13.415+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T18:58:13.447+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:58:13.447+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T18:58:13.464+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.183 seconds
+[2025-11-11T18:58:43.819+0000] {processor.py:153} INFO - Started process (PID=252) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:58:43.821+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T18:58:43.822+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:58:43.822+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:58:43.894+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:58:43.930+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:58:43.929+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T18:58:43.958+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:58:43.957+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T18:58:43.975+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.167 seconds
+[2025-11-11T18:59:14.461+0000] {processor.py:153} INFO - Started process (PID=262) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:59:14.463+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T18:59:14.464+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:59:14.464+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:59:14.560+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:59:14.606+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:59:14.606+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T18:59:14.641+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:59:14.641+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T18:59:14.651+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.202 seconds
+[2025-11-11T18:59:45.036+0000] {processor.py:153} INFO - Started process (PID=272) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:59:45.037+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T18:59:45.038+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:59:45.038+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:59:45.116+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T18:59:45.154+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:59:45.153+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T18:59:45.174+0000] {logging_mixin.py:137} INFO - [2025-11-11T18:59:45.173+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T18:59:45.188+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.159 seconds
+[2025-11-11T19:00:15.697+0000] {processor.py:153} INFO - Started process (PID=282) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:00:15.702+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:00:15.703+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:00:15.703+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:00:15.818+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:00:15.855+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:00:15.854+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:00:15.883+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:00:15.883+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:00:15.902+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.215 seconds
+[2025-11-11T19:00:46.154+0000] {processor.py:153} INFO - Started process (PID=292) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:00:46.156+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:00:46.157+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:00:46.156+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:00:46.230+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:00:46.281+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:00:46.281+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:00:46.309+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:00:46.309+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:00:46.326+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.179 seconds
+[2025-11-11T19:01:16.570+0000] {processor.py:153} INFO - Started process (PID=302) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:01:16.574+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:01:16.576+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:01:16.575+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:01:16.655+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:01:16.680+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:01:16.680+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:01:16.709+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:01:16.709+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:01:16.724+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.168 seconds
+[2025-11-11T19:01:47.128+0000] {processor.py:153} INFO - Started process (PID=318) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:01:47.130+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:01:47.131+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:01:47.131+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:01:47.208+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:01:47.239+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:01:47.239+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:01:47.280+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:01:47.280+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:01:47.308+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.188 seconds
+[2025-11-11T19:02:17.767+0000] {processor.py:153} INFO - Started process (PID=328) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:02:17.769+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:02:17.770+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:02:17.770+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:02:17.856+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:02:17.886+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:02:17.885+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:02:17.909+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:02:17.909+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:02:17.928+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.176 seconds
+[2025-11-11T19:02:48.360+0000] {processor.py:153} INFO - Started process (PID=338) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:02:48.362+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:02:48.363+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:02:48.363+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:02:48.457+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:02:48.483+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:02:48.483+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:02:48.514+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:02:48.514+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:02:48.526+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.189 seconds
+[2025-11-11T19:03:18.975+0000] {processor.py:153} INFO - Started process (PID=348) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:03:18.977+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:03:18.978+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:03:18.978+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:03:19.071+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:03:19.114+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:03:19.113+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:03:19.157+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:03:19.157+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:03:19.173+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.214 seconds
+[2025-11-11T19:03:49.538+0000] {processor.py:153} INFO - Started process (PID=358) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:03:49.540+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:03:49.541+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:03:49.541+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:03:49.619+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:03:49.647+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:03:49.647+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:03:49.671+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:03:49.671+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:03:49.685+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.161 seconds
+[2025-11-11T19:04:20.046+0000] {processor.py:153} INFO - Started process (PID=368) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:04:20.048+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:04:20.050+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:04:20.050+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:04:20.119+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:04:20.141+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:04:20.141+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:04:20.167+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:04:20.166+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:04:20.180+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.146 seconds
+[2025-11-11T19:04:50.492+0000] {processor.py:153} INFO - Started process (PID=378) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:04:50.494+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:04:50.495+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:04:50.495+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:04:50.576+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:04:50.613+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:04:50.613+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:04:50.649+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:04:50.649+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:04:50.664+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.188 seconds
+[2025-11-11T19:05:21.042+0000] {processor.py:153} INFO - Started process (PID=388) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:05:21.044+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:05:21.045+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:05:21.045+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:05:21.118+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:05:21.146+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:05:21.145+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:05:21.168+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:05:21.168+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:05:21.184+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.154 seconds
+[2025-11-11T19:05:51.820+0000] {processor.py:153} INFO - Started process (PID=398) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:05:51.822+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:05:51.823+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:05:51.823+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:05:51.936+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:05:51.999+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:05:51.999+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:05:52.063+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:05:52.062+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:05:52.081+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.269 seconds
+[2025-11-11T19:06:22.552+0000] {processor.py:153} INFO - Started process (PID=408) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:06:22.558+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:06:22.560+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:06:22.560+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:06:22.623+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:06:22.669+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:06:22.668+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:06:22.693+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:06:22.693+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:06:22.708+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.171 seconds
+[2025-11-11T19:06:52.895+0000] {processor.py:153} INFO - Started process (PID=418) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:06:52.900+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:06:52.901+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:06:52.901+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:06:53.013+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:06:53.076+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:06:53.075+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:06:53.105+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:06:53.105+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:06:53.115+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.231 seconds
+[2025-11-11T19:07:23.477+0000] {processor.py:153} INFO - Started process (PID=428) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:07:23.481+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:07:23.482+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:07:23.482+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:07:23.564+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:07:23.586+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:07:23.586+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:07:23.606+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:07:23.606+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:07:23.619+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.152 seconds
+[2025-11-11T19:07:53.971+0000] {processor.py:153} INFO - Started process (PID=438) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:07:53.974+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:07:53.974+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:07:53.974+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:07:54.056+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:07:54.085+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:07:54.085+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:07:54.101+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:07:54.101+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:07:54.111+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.149 seconds
+[2025-11-11T19:08:24.511+0000] {processor.py:153} INFO - Started process (PID=448) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:08:24.513+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:08:24.515+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:08:24.515+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:08:24.584+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:08:24.611+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:08:24.611+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:08:24.632+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:08:24.632+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:08:24.645+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.148 seconds
+[2025-11-11T19:08:54.974+0000] {processor.py:153} INFO - Started process (PID=458) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:08:54.976+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:08:54.977+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:08:54.977+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:08:55.044+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:08:55.068+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:08:55.067+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:08:55.089+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:08:55.089+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:08:55.102+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.137 seconds
+[2025-11-11T19:09:25.533+0000] {processor.py:153} INFO - Started process (PID=468) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:09:25.535+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:09:25.536+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:09:25.536+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:09:25.607+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:09:25.629+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:09:25.628+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:09:25.649+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:09:25.649+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:09:25.663+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.142 seconds
+[2025-11-11T19:09:55.989+0000] {processor.py:153} INFO - Started process (PID=478) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:09:56.002+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:09:56.003+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:09:56.003+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:09:56.057+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:09:56.085+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:09:56.085+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:09:56.108+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:09:56.108+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:09:56.122+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.143 seconds
+[2025-11-11T19:11:02.044+0000] {processor.py:153} INFO - Started process (PID=185) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:11:02.047+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:11:02.049+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:11:02.049+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:11:02.312+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:11:02.387+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:11:02.387+0000] {manager.py:504} INFO - Created Permission View: can edit on DAG:gtfs_realtime_dag
+[2025-11-11T19:11:02.394+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:11:02.394+0000] {manager.py:504} INFO - Created Permission View: can read on DAG:gtfs_realtime_dag
+[2025-11-11T19:11:02.398+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:11:02.398+0000] {manager.py:504} INFO - Created Permission View: can delete on DAG:gtfs_realtime_dag
+[2025-11-11T19:11:02.401+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:11:02.401+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:11:02.410+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:11:02.409+0000] {dag.py:2711} INFO - Creating ORM DAG for gtfs_realtime_dag
+[2025-11-11T19:11:02.418+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:11:02.418+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-10T00:00:00+00:00, run_after=2025-11-11T00:00:00+00:00
+[2025-11-11T19:11:02.435+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.394 seconds
+[2025-11-11T19:11:32.930+0000] {processor.py:153} INFO - Started process (PID=199) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:11:32.933+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:11:32.934+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:11:32.934+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:11:33.038+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:11:33.084+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:11:33.084+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:11:33.117+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:11:33.117+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:11:33.153+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.228 seconds
+[2025-11-11T19:12:03.639+0000] {processor.py:153} INFO - Started process (PID=212) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:12:03.641+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:12:03.643+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:12:03.643+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:12:03.734+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:12:03.763+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:12:03.762+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:12:03.784+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:12:03.784+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:12:03.802+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.170 seconds
+[2025-11-11T19:12:34.243+0000] {processor.py:153} INFO - Started process (PID=222) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:12:34.246+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:12:34.247+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:12:34.247+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:12:34.319+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:12:34.368+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:12:34.367+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:12:34.392+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:12:34.392+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:12:34.409+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.174 seconds
+[2025-11-11T19:13:04.770+0000] {processor.py:153} INFO - Started process (PID=232) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:13:04.777+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:13:04.780+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:13:04.779+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:13:04.858+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:13:04.884+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:13:04.883+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:13:04.905+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:13:04.905+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:13:04.920+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.162 seconds
+[2025-11-11T19:13:35.497+0000] {processor.py:153} INFO - Started process (PID=242) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:13:35.499+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:13:35.499+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:13:35.499+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:13:35.579+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:13:35.619+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:13:35.619+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:13:35.641+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:13:35.641+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:13:35.659+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.174 seconds
+[2025-11-11T19:14:06.147+0000] {processor.py:153} INFO - Started process (PID=252) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:14:06.150+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:14:06.151+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:14:06.151+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:14:06.241+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:14:06.275+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:14:06.275+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:14:06.304+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:14:06.304+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:14:06.320+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.188 seconds
+[2025-11-11T19:14:36.827+0000] {processor.py:153} INFO - Started process (PID=262) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:14:36.829+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:14:36.830+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:14:36.830+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:14:36.909+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:14:36.938+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:14:36.938+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:14:36.964+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:14:36.963+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:14:36.981+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.164 seconds
+[2025-11-11T19:15:07.494+0000] {processor.py:153} INFO - Started process (PID=272) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:15:07.497+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:15:07.500+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:15:07.499+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:15:07.576+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:15:07.619+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:15:07.618+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:15:07.645+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:15:07.645+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:15:07.665+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.186 seconds
+[2025-11-11T19:15:38.083+0000] {processor.py:153} INFO - Started process (PID=282) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:15:38.088+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:15:38.090+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:15:38.090+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:15:38.163+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:15:38.215+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:15:38.214+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:15:38.233+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:15:38.233+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:15:38.249+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.180 seconds
+[2025-11-11T19:16:08.850+0000] {processor.py:153} INFO - Started process (PID=292) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:16:08.852+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:16:08.853+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:16:08.853+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:16:08.956+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:16:08.979+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:16:08.979+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:16:08.998+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:16:08.998+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:16:09.013+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.180 seconds
+[2025-11-11T19:19:15.279+0000] {processor.py:153} INFO - Started process (PID=185) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:19:15.280+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:19:15.282+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:19:15.281+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:19:15.665+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:19:15.781+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:19:15.781+0000] {manager.py:504} INFO - Created Permission View: can delete on DAG:gtfs_realtime_dag
+[2025-11-11T19:19:15.785+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:19:15.785+0000] {manager.py:504} INFO - Created Permission View: can read on DAG:gtfs_realtime_dag
+[2025-11-11T19:19:15.788+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:19:15.788+0000] {manager.py:504} INFO - Created Permission View: can edit on DAG:gtfs_realtime_dag
+[2025-11-11T19:19:15.788+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:19:15.788+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:19:15.795+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:19:15.795+0000] {dag.py:2711} INFO - Creating ORM DAG for gtfs_realtime_dag
+[2025-11-11T19:19:15.801+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:19:15.801+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-10T00:00:00+00:00, run_after=2025-11-11T00:00:00+00:00
+[2025-11-11T19:19:15.811+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.534 seconds
+[2025-11-11T19:19:46.179+0000] {processor.py:153} INFO - Started process (PID=196) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:19:46.182+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:19:46.184+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:19:46.184+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:19:46.261+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:19:46.290+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:19:46.290+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:19:46.314+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:19:46.314+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-10T00:00:00+00:00, run_after=2025-11-11T00:00:00+00:00
+[2025-11-11T19:19:46.327+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.154 seconds
+[2025-11-11T19:20:16.881+0000] {processor.py:153} INFO - Started process (PID=206) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:20:16.889+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:20:16.891+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:20:16.891+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:20:16.978+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:20:17.001+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:20:17.000+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:20:17.023+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:20:17.023+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-10T00:00:00+00:00, run_after=2025-11-11T00:00:00+00:00
+[2025-11-11T19:20:17.040+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.167 seconds
+[2025-11-11T19:20:47.548+0000] {processor.py:153} INFO - Started process (PID=220) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:20:47.550+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:20:47.551+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:20:47.551+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:20:47.607+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:20:47.634+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:20:47.634+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:20:47.653+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:20:47.653+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:20:47.665+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.126 seconds
+[2025-11-11T19:21:18.047+0000] {processor.py:153} INFO - Started process (PID=230) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:21:18.051+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:21:18.053+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:21:18.053+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:21:18.130+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:21:18.158+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:21:18.158+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:21:18.193+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:21:18.193+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:21:18.214+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.181 seconds
+[2025-11-11T19:21:48.575+0000] {processor.py:153} INFO - Started process (PID=240) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:21:48.577+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:21:48.579+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:21:48.579+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:21:48.665+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:21:48.694+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:21:48.693+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:21:48.713+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:21:48.713+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:21:48.728+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.165 seconds
+[2025-11-11T19:22:19.120+0000] {processor.py:153} INFO - Started process (PID=250) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:22:19.122+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:22:19.123+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:22:19.123+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:22:19.215+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:22:19.251+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:22:19.251+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:22:19.276+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:22:19.276+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:22:19.292+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.188 seconds
+[2025-11-11T19:22:49.819+0000] {processor.py:153} INFO - Started process (PID=260) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:22:49.823+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:22:49.825+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:22:49.825+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:22:49.886+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:22:49.913+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:22:49.913+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:22:49.945+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:22:49.945+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:22:49.966+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.157 seconds
+[2025-11-11T19:23:20.573+0000] {processor.py:153} INFO - Started process (PID=270) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:23:20.580+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:23:20.582+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:23:20.581+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:23:20.756+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:23:20.889+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:23:20.888+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:23:20.925+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:23:20.925+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:23:20.948+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.421 seconds
+[2025-11-11T19:23:51.398+0000] {processor.py:153} INFO - Started process (PID=280) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:23:51.400+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:23:51.401+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:23:51.401+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:23:51.481+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:23:51.515+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:23:51.515+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:23:51.540+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:23:51.540+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:23:51.557+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.169 seconds
+[2025-11-11T19:24:21.935+0000] {processor.py:153} INFO - Started process (PID=290) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:24:21.939+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:24:21.940+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:24:21.940+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:24:22.017+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:24:22.049+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:24:22.048+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:24:22.078+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:24:22.078+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:24:22.101+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.177 seconds
+[2025-11-11T19:24:52.354+0000] {processor.py:153} INFO - Started process (PID=300) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:24:52.359+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:24:52.360+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:24:52.360+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:24:52.450+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:24:52.481+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:24:52.480+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:24:52.508+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:24:52.508+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:24:52.524+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.187 seconds
+[2025-11-11T19:25:23.000+0000] {processor.py:153} INFO - Started process (PID=310) to work on /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:25:23.002+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/gtfs_realtime_dag.py for tasks to queue
+[2025-11-11T19:25:23.003+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:25:23.003+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:25:23.108+0000] {processor.py:753} INFO - DAG(s) dict_keys(['gtfs_realtime_dag']) retrieved from /opt/airflow/dags/gtfs_realtime_dag.py
+[2025-11-11T19:25:23.138+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:25:23.138+0000] {dag.py:2690} INFO - Sync 1 DAGs
+[2025-11-11T19:25:23.181+0000] {logging_mixin.py:137} INFO - [2025-11-11T19:25:23.181+0000] {dag.py:3441} INFO - Setting next_dagrun for gtfs_realtime_dag to 2025-11-11T00:00:00+00:00, run_after=2025-11-12T00:00:00+00:00
+[2025-11-11T19:25:23.193+0000] {processor.py:175} INFO - Processing /opt/airflow/dags/gtfs_realtime_dag.py took 0.205 seconds

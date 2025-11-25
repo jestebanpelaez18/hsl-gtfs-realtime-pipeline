@@ -1,0 +1,184 @@
+[2025-11-11T18:56:19.928+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: gtfs_realtime_dag.extract_data scheduled__2025-11-10T00:00:00+00:00 [queued]>
+[2025-11-11T18:56:19.938+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: gtfs_realtime_dag.extract_data scheduled__2025-11-10T00:00:00+00:00 [queued]>
+[2025-11-11T18:56:19.938+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2025-11-11T18:56:19.938+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 2
+[2025-11-11T18:56:19.938+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2025-11-11T18:56:19.951+0000] {taskinstance.py:1300} INFO - Executing <Task(PythonOperator): extract_data> on 2025-11-10 00:00:00+00:00
+[2025-11-11T18:56:19.960+0000] {standard_task_runner.py:55} INFO - Started process 209 to run task
+[2025-11-11T18:56:19.975+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'gtfs_realtime_dag', 'extract_data', 'scheduled__2025-11-10T00:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/gtfs_realtime_dag.py', '--cfg-path', '/tmp/tmpi6k3ifoj']
+[2025-11-11T18:56:19.990+0000] {standard_task_runner.py:83} INFO - Job 2: Subtask extract_data
+[2025-11-11T18:56:20.053+0000] {logging_mixin.py:137} WARNING - /home/***/.local/lib/python3.7/site-packages/***/settings.py:249 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-11T18:56:20.122+0000] {logging_mixin.py:137} WARNING - /home/***/.local/lib/python3.7/site-packages/***/utils/sqlalchemy.py:124 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-11T18:56:20.167+0000] {task_command.py:388} INFO - Running <TaskInstance: gtfs_realtime_dag.extract_data scheduled__2025-11-10T00:00:00+00:00 [running]> on host 4a174025fd7a
+[2025-11-11T18:56:20.244+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=juanillo@hello.com
+AIRFLOW_CTX_DAG_OWNER=Juan Esteban
+AIRFLOW_CTX_DAG_ID=gtfs_realtime_dag
+AIRFLOW_CTX_TASK_ID=extract_data
+AIRFLOW_CTX_EXECUTION_DATE=2025-11-10T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2025-11-10T00:00:00+00:00
+[2025-11-11T18:56:20.271+0000] {logging_mixin.py:137} INFO - extracting feed: vehicle_position
+[2025-11-11T18:56:20.914+0000] {taskinstance.py:1768} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/gtfs_realtime_dag.py", line 30, in run_extractor
+    run_all_feed(output_dir)
+  File "/opt/airflow/src/extract.py", line 54, in run_all_feed
+    save_feed(data, feed_type, output_dir)
+  File "/opt/airflow/src/extract.py", line 29, in save_feed
+    os.makedirs(output_dir, exist_ok=True)
+  File "/usr/local/lib/python3.7/os.py", line 213, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/usr/local/lib/python3.7/os.py", line 223, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '../data'
+[2025-11-11T18:56:20.933+0000] {taskinstance.py:1323} INFO - Marking task as UP_FOR_RETRY. dag_id=gtfs_realtime_dag, task_id=extract_data, execution_date=20251110T000000, start_date=20251111T185619, end_date=20251111T185620
+[2025-11-11T18:56:20.948+0000] {logging_mixin.py:137} WARNING - /home/***/.local/lib/python3.7/site-packages/***/utils/email.py:152 RemovedInAirflow3Warning: Fetching SMTP credentials from configuration variables will be deprecated in a future release. Please set credentials using a connection instead.
+[2025-11-11T18:56:20.949+0000] {configuration.py:663} WARNING - section/key [smtp/smtp_user] not found in config
+[2025-11-11T18:56:20.949+0000] {email.py:268} INFO - Email alerting: attempt 1
+[2025-11-11T18:56:20.956+0000] {configuration.py:663} WARNING - section/key [smtp/smtp_user] not found in config
+[2025-11-11T18:56:20.956+0000] {email.py:268} INFO - Email alerting: attempt 1
+[2025-11-11T18:56:20.957+0000] {taskinstance.py:1831} ERROR - Failed to send email to: juanillo@hello.com
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1374, in _run_raw_task
+    self._execute_task_with_callbacks(context, test_mode)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1520, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1581, in _execute_task
+    result = execute_callable(context=context)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/gtfs_realtime_dag.py", line 30, in run_extractor
+    run_all_feed(output_dir)
+  File "/opt/airflow/src/extract.py", line 54, in run_all_feed
+    save_feed(data, feed_type, output_dir)
+  File "/opt/airflow/src/extract.py", line 29, in save_feed
+    os.makedirs(output_dir, exist_ok=True)
+  File "/usr/local/lib/python3.7/os.py", line 213, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/usr/local/lib/python3.7/os.py", line 223, in makedirs
+    mkdir(name, mode)
+PermissionError: [Errno 13] Permission denied: '../data'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2231, in email_alert
+    send_email(task.email, subject, html_content)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 91, in send_email
+    **kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 152, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 270, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 317, in _get_smtp_connection
+    else smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.7/smtplib.py", line 251, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.7/smtplib.py", line 336, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.7/smtplib.py", line 307, in _get_socket
+    self.source_address)
+  File "/usr/local/lib/python3.7/socket.py", line 728, in create_connection
+    raise err
+  File "/usr/local/lib/python3.7/socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 1829, in handle_failure
+    self.email_alert(error, task)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/taskinstance.py", line 2233, in email_alert
+    send_email(task.email, subject, html_content_err)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 91, in send_email
+    **kwargs,
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 152, in send_email_smtp
+    send_mime_email(e_from=mail_from, e_to=recipients, mime_msg=msg, conn_id=conn_id, dryrun=dryrun)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 270, in send_mime_email
+    smtp_conn = _get_smtp_connection(smtp_host, smtp_port, smtp_timeout, smtp_ssl)
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/email.py", line 317, in _get_smtp_connection
+    else smtplib.SMTP(host=host, port=port, timeout=timeout)
+  File "/usr/local/lib/python3.7/smtplib.py", line 251, in __init__
+    (code, msg) = self.connect(host, port)
+  File "/usr/local/lib/python3.7/smtplib.py", line 336, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+  File "/usr/local/lib/python3.7/smtplib.py", line 307, in _get_socket
+    self.source_address)
+  File "/usr/local/lib/python3.7/socket.py", line 728, in create_connection
+    raise err
+  File "/usr/local/lib/python3.7/socket.py", line 716, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+[2025-11-11T18:56:20.969+0000] {standard_task_runner.py:105} ERROR - Failed to execute job 2 for task extract_data ([Errno 13] Permission denied: '../data'; 209)
+[2025-11-11T18:56:20.993+0000] {local_task_job.py:208} INFO - Task exited with return code 1
+[2025-11-11T18:56:21.034+0000] {taskinstance.py:2578} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-11T19:11:33.165+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: gtfs_realtime_dag.extract_data scheduled__2025-11-10T00:00:00+00:00 [queued]>
+[2025-11-11T19:11:33.172+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: gtfs_realtime_dag.extract_data scheduled__2025-11-10T00:00:00+00:00 [queued]>
+[2025-11-11T19:11:33.172+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2025-11-11T19:11:33.172+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 2
+[2025-11-11T19:11:33.174+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2025-11-11T19:11:33.182+0000] {taskinstance.py:1300} INFO - Executing <Task(PythonOperator): extract_data> on 2025-11-10 00:00:00+00:00
+[2025-11-11T19:11:33.191+0000] {standard_task_runner.py:55} INFO - Started process 210 to run task
+[2025-11-11T19:11:33.195+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'gtfs_realtime_dag', 'extract_data', 'scheduled__2025-11-10T00:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/gtfs_realtime_dag.py', '--cfg-path', '/tmp/tmpnys45vh9']
+[2025-11-11T19:11:33.198+0000] {standard_task_runner.py:83} INFO - Job 2: Subtask extract_data
+[2025-11-11T19:11:33.215+0000] {logging_mixin.py:137} WARNING - /home/***/.local/lib/python3.7/site-packages/***/settings.py:249 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-11T19:11:33.241+0000] {logging_mixin.py:137} WARNING - /home/***/.local/lib/python3.7/site-packages/***/utils/sqlalchemy.py:124 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-11T19:11:33.276+0000] {task_command.py:388} INFO - Running <TaskInstance: gtfs_realtime_dag.extract_data scheduled__2025-11-10T00:00:00+00:00 [running]> on host 2fc9ab499ce5
+[2025-11-11T19:11:33.335+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=juanillo@hello.com
+AIRFLOW_CTX_DAG_OWNER=Juan Esteban
+AIRFLOW_CTX_DAG_ID=gtfs_realtime_dag
+AIRFLOW_CTX_TASK_ID=extract_data
+AIRFLOW_CTX_EXECUTION_DATE=2025-11-10T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2025-11-10T00:00:00+00:00
+[2025-11-11T19:11:33.335+0000] {logging_mixin.py:137} INFO - extracting feed: vehicle_position
+[2025-11-11T19:11:33.786+0000] {logging_mixin.py:137} INFO - ✅ Saved 615 records to /opt/***/data/raw/vehicle_position_20251111_191133.json
+[2025-11-11T19:11:33.789+0000] {logging_mixin.py:137} INFO - extracting feed: trip_updates
+[2025-11-11T19:11:34.933+0000] {logging_mixin.py:137} INFO - ✅ Saved 870 records to /opt/***/data/raw/trip_updates_20251111_191134.json
+[2025-11-11T19:11:34.945+0000] {python.py:177} INFO - Done. Returned value was: None
+[2025-11-11T19:11:34.957+0000] {taskinstance.py:1323} INFO - Marking task as SUCCESS. dag_id=gtfs_realtime_dag, task_id=extract_data, execution_date=20251110T000000, start_date=20251111T191133, end_date=20251111T191134
+[2025-11-11T19:11:35.008+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2025-11-11T19:11:35.039+0000] {taskinstance.py:2578} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-11T19:20:41.937+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: gtfs_realtime_dag.extract_data scheduled__2025-11-10T00:00:00+00:00 [queued]>
+[2025-11-11T19:20:41.947+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: gtfs_realtime_dag.extract_data scheduled__2025-11-10T00:00:00+00:00 [queued]>
+[2025-11-11T19:20:41.950+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2025-11-11T19:20:41.951+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 2
+[2025-11-11T19:20:41.951+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2025-11-11T19:20:41.964+0000] {taskinstance.py:1300} INFO - Executing <Task(PythonOperator): extract_data> on 2025-11-10 00:00:00+00:00
+[2025-11-11T19:20:41.996+0000] {standard_task_runner.py:55} INFO - Started process 218 to run task
+[2025-11-11T19:20:42.006+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'gtfs_realtime_dag', 'extract_data', 'scheduled__2025-11-10T00:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/gtfs_realtime_dag.py', '--cfg-path', '/tmp/tmpijroq2hj']
+[2025-11-11T19:20:42.014+0000] {standard_task_runner.py:83} INFO - Job 2: Subtask extract_data
+[2025-11-11T19:20:42.046+0000] {logging_mixin.py:137} WARNING - /home/***/.local/lib/python3.7/site-packages/***/settings.py:249 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-11T19:20:42.096+0000] {logging_mixin.py:137} WARNING - /home/***/.local/lib/python3.7/site-packages/***/utils/sqlalchemy.py:124 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2025-11-11T19:20:42.133+0000] {task_command.py:388} INFO - Running <TaskInstance: gtfs_realtime_dag.extract_data scheduled__2025-11-10T00:00:00+00:00 [running]> on host 91f88fd89faa
+[2025-11-11T19:20:42.191+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=juanillo@hello.com
+AIRFLOW_CTX_DAG_OWNER=Juan Esteban
+AIRFLOW_CTX_DAG_ID=gtfs_realtime_dag
+AIRFLOW_CTX_TASK_ID=extract_data
+AIRFLOW_CTX_EXECUTION_DATE=2025-11-10T00:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2025-11-10T00:00:00+00:00
+[2025-11-11T19:20:42.192+0000] {logging_mixin.py:137} INFO - extracting feed: vehicle_position
+[2025-11-11T19:20:42.672+0000] {logging_mixin.py:137} INFO - ✅ Saved 604 records to /opt/***/data/raw/vehicle_position_20251111_192042.json
+[2025-11-11T19:20:42.673+0000] {logging_mixin.py:137} INFO - extracting feed: trip_updates
+[2025-11-11T19:20:44.057+0000] {logging_mixin.py:137} INFO - ✅ Saved 854 records to /opt/***/data/raw/trip_updates_20251111_192043.json
+[2025-11-11T19:20:44.065+0000] {python.py:177} INFO - Done. Returned value was: None
+[2025-11-11T19:20:44.078+0000] {taskinstance.py:1323} INFO - Marking task as SUCCESS. dag_id=gtfs_realtime_dag, task_id=extract_data, execution_date=20251110T000000, start_date=20251111T192041, end_date=20251111T192044
+[2025-11-11T19:20:44.093+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2025-11-11T19:20:44.106+0000] {taskinstance.py:2578} INFO - 0 downstream tasks scheduled from follow-on schedule check
