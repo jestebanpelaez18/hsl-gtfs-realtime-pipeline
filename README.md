@@ -61,9 +61,9 @@ hsl-gtfs-realtime-pipeline/
 ├── databricks/               # PySpark notebooks (Delta Lake processing)
 │   └── 01_vehicle_positions_cleaning.ipynb
 ├── docs/                     # Project documentation
-│   └── databricks_vehicle_positions.md
+│   └── databricks_01_vehicle_positions.md
 ├── docker/airflow/           # Airflow Dockerfile + entrypoint
-├── docker-compose.yml
+├── docker-compose.yaml
 ├── requirements.txt
 └── Makefile
 ```
