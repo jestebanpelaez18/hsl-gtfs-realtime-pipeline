@@ -6,7 +6,7 @@ import sys
 sys.path.append('/opt/airflow/src')
 from extract import run_all_feed
 import os
-from databricks_utils import upload_to_databricks, upload_to_workspace
+from databricks_utils import  upload_to_workspace, run_databricks_job
 
 
 default_args = {
@@ -66,5 +66,11 @@ upload_data_to_databricks = PythonOperator(
     dag=dag
 )   
 
+# Task 3: Run the notebook on Databricks
+run_notebook = PythonOperator(
+    task_id='run_notebook_on_databricks',
+    python_callable=run_databricks_job,
+    dag=dag
+)   
 
-extract_data >> upload_data_to_databricks
+extract_data >> upload_data_to_databricks >> run_notebook
