@@ -6,6 +6,19 @@ The goal is to extract, clean, transform, and load (ETL) GTFS Realtime data to e
 The pipeline follows a modern data lake architecture using **Delta Lake**.
 
 ---
+## Project Architecture
+
+```mermaid
+graph LR
+    A[HSL API GTFS] -->|Extract & Parse| B(Apache Airflow)
+    B -->|Save JSON| C[Raw Data / Workspace]
+    C -->|Hybrid Ingestion (Python/Pandas)| D[Databricks Spark Cluster]
+    D -->|Transform & Clean| E[(Delta Lake Silver Table)]
+    E -->|Analysis & Visualization| F[Databricks Notebooks]
+```
+**Note on Infrastructur**e: This project is deployed on **Databricks Community Edition**. Due to network/mounting restrictions in the free tier, the pipeline uses a custom local file ingestion strategy (Python os + Pandas) to bridge the gap between raw data upload and Spark processing, simulating a cloud storage m
+
+---
 
 ## Project Overview
 
@@ -25,16 +38,15 @@ The pipeline follows a modern data lake architecture using **Delta Lake**.
 - Containerized with **Docker + Docker Compose**
 
 ### Transformation (Databricks + PySpark + Delta Lake)
-A dedicated Databricks transformation layer processes the extracted JSON:
+A dedicated Databricks transformation layer processes the extracted JSON using a **hybrid reading approach**:
 
-- Reads GTFS-Realtime JSON into PySpark  
-- Extracts nested fields (`vehicle`, `trip`, `position`)  
-- Converts UNIX timestamps into proper Spark timestamps  
-- Cleans coordinates and removes duplicates  
-- Adds partitioning columns: `event_date` and `event_hour`  
-- Loads cleaned data into a **Delta Lake Silver table**  
-  - `hsl_demo.vehicle_positions_silver`  
-- Notebooks exported to the repository for reproducibility
+- **Dynamic File Detection**: Uses Python `os` library to detect the latest uploaded file in the Workspace.
+- **Robust Ingestion**: Reads JSON via **Pandas** first to handle complex nested structures and bypass file system locks, then converts to Spark DataFrame.
+- **Data Cleaning**:
+  - Extracts nested fields (`vehicle`, `trip`, `position`)
+  - Converts UNIX timestamps into proper Spark timestamps
+  - Cleans coordinates and removes duplicates
+- **Storage**: Loads cleaned data into a **Delta Lake Silver table** (`hsl_demo.vehicle_positions_silver`) partitioned by `event_date`.
 
 ---
 
@@ -103,7 +115,7 @@ This command will:
 ### 4. Visit Airflow UI
 
 * URL: [http://localhost:8080](http://localhost:8080)
-* Default login: `airflow / airflow`
+* Default login: `admin / admin`
 
 ### 5. Trigger the DAG
 
@@ -114,19 +126,15 @@ make trigger
 
 ### 6. Databricks Transformation Layer (Silver) 🥈
 
-The cleaned dataset is processed in Databricks using **PySpark** and stored as a **Delta Lake Silver table**.
+1. Upload the JSON file generated in `data/raw/` to your Databricks Workspace.
+2. Run the `01_vehicle_positions_cleaning.ipynb` notebook.
+3. The logic will automatically pick up the latest file, process it, and save it as a **Delta Table**.
 
-* Table:  `hsl_demo.vehicle_positions_silver` 
-* Partitioning: `event_date`, `event_hour` 
-* Format:  **Delta** 
-
-Notebooks are exported and version-controlled under `/databricks/`.
 ---
 
 ## Future Improvements
 
-* Add support for **Service Alerts** feed
-* Add Bronze and Gold layers (Delta Lake)
-* Integrate Azure Data Factory for orchestration.
-* Schedule with cron-like intervals (`*/5 * * * *`)
-* Export to database or cloud storage (Postgres, S3, BigQuery)
+* **Cloud Integration**: Migrate manual file ingestion to automated cloud storage mounting (Azure Blob Storage / S3) once a Standard Cluster is available.
+* **Service Alerts**: Add support for the Service Alerts feed.
+* **Medallion Architecture**: Complete the pipeline with Bronze (Raw Ingestion) and Gold (Aggregated Analytics) layers.
+* **Automation**: Schedule Databricks jobs via Airflow `DatabricksSubmitRunOperator`.

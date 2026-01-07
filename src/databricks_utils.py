@@ -1,13 +1,12 @@
 import os
 import base64
-import json
 import pathlib
 import requests
 
 def upload_to_workspace(local_file_path, workspace_dir_env="WORKSPACE_TARGET_DIR"):
     host = os.environ["DATABRICKS_HOST"].split("?")[0].rstrip("/")
     token = os.environ["DATABRICKS_TOKEN"]
-    target_dir = os.getenv(workspace_dir_env, "/Workspace/Users/juanes.pelaez18@gmail.com/hsl/raw").rstrip("/")
+    target_dir = os.getenv(workspace_dir_env, "/Workspace/Users/juanes.pelaez18@gmail.com").rstrip("/")
 
     filename = pathlib.Path(local_file_path).name
     workspace_path = f"{target_dir}/{filename}"
