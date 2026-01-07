@@ -6,13 +6,14 @@ The goal is to extract, clean, transform, and load (ETL) GTFS Realtime data to e
 The pipeline follows a modern data lake architecture using **Delta Lake**.
 
 ---
+
 ## Project Architecture
 
 ```mermaid
 graph LR
     A[HSL API GTFS] -->|Extract & Parse| B(Apache Airflow)
     B -->|Save JSON| C[Raw Data / Workspace]
-    C -->|Hybrid Ingestion (Python/Pandas)| D[Databricks Spark Cluster]
+    C -->|"Hybrid Ingestion (Python/Pandas)"| D[Databricks Spark Cluster]
     D -->|Transform & Clean| E[(Delta Lake Silver Table)]
     E -->|Analysis & Visualization| F[Databricks Notebooks]
 ```
