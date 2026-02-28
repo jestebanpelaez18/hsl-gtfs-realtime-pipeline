@@ -1,24 +1,24 @@
 
 services:
-  postgres:
+  airflow-postgres:
     image: postgres:13
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
     volumes:
-      - postgres-db-volume:/var/lib/postgresql/data
+      - airflow-postgres-db-volume:/var/lib/postgresql/data
 
   airflow-webserver:
     build: ./docker/airflow
     depends_on:
-      - postgres
+      - airflow-postgres
     env_file:
       - ./.env
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres/airflow
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     ports:
       - "8080:8080"
@@ -33,13 +33,13 @@ services:
   airflow-scheduler:
     build: ./docker/airflow
     depends_on:
-      - postgres
+      - airflow-postgres
     env_file:
       - ./.env
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres/airflow
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres/airflow
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
@@ -48,5 +48,18 @@ services:
     command: scheduler
     user: "${AIRFLOW_UID}:0"
 
+  warehouse-postgres:
+    image: postgres:16
+    container_name: hsl_warehouse_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${WAREHOUSE_POSTGRES_USER:-hsl_user}
+      POSTGRES_PASSWORD: ${WAREHOUSE_POSTGRES_PASSWORD:-hsl_pass}
+      POSTGRES_DB: ${WAREHOUSE_POSTGRES_DB:-hsl_db}
+    ports:
+      - "5433:5432"
+    volumes:
+      - warehouse-postgres-db-volume:/var/lib/postgresql/data
 volumes:
-  postgres-db-volume:
+  airflow-postgres-db-volume:
+  warehouse-postgres-db-volume:
