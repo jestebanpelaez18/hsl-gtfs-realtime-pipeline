@@ -41,13 +41,13 @@ This project simulates a real-world data engineering workflow by ingesting publi
 
 ```mermaid
 graph LR
-    A[HSL GTFS-RT API] --> B[Airflow Extract Tasks]
-    B --> C[Raw JSON Storage (Bronze)]
-    C --> D[PySpark Jobs (Silver Transformation)]
-    D --> E[(PostgreSQL Silver Tables)]
-    E --> F[dbt Models (Gold Layer)]
-    F --> G[(PostgreSQL Gold Tables)]
-    G --> H[Data Quality & Metrics Reporting]
+    A["HSL GTFS-RT API"] --> B["Airflow Extract Tasks"]
+    B --> C["Raw JSON Storage (Bronze)"]
+    C --> D["PySpark Jobs (Silver Transformation)"]
+    D --> E[("PostgreSQL Silver Tables")]
+    E --> F["dbt Models (Gold Layer)"]
+    F --> G[("PostgreSQL Gold Tables")]
+    G --> H["Data Quality & Metrics Reporting"]
 ```
 ---
 
