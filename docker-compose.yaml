@@ -52,10 +52,12 @@ services:
     image: postgres:16
     container_name: hsl_warehouse_postgres
     restart: unless-stopped
+    env_file:
+      - ./.env
     environment:
-      POSTGRES_USER: ${WAREHOUSE_POSTGRES_USER:-hsl_user}
-      POSTGRES_PASSWORD: ${WAREHOUSE_POSTGRES_PASSWORD:-hsl_pass}
-      POSTGRES_DB: ${WAREHOUSE_POSTGRES_DB:-hsl_db}
+      POSTGRES_USER: ${WAREHOUSE_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${WAREHOUSE_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${WAREHOUSE_POSTGRES_DB}
     ports:
       - "5433:5432"
     volumes:
