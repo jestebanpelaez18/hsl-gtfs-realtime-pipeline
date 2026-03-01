@@ -26,8 +26,9 @@ def parse_feed(feed):
 def save_feed(data, feed_type, output_dir):
     ''' Saves parsed GTFS data to a timestamped JSON file '''
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-    os.makedirs(output_dir, exist_ok=True)
-    file_path = os.path.join(output_dir, f"{feed_type}_{timestamp}.json")
+    output_dir_final = os.path.join(output_dir, feed_type)
+    os.makedirs(output_dir_final, exist_ok=True)
+    file_path = os.path.join(output_dir_final, f"{feed_type}_{timestamp}.json")
 
     with open(file_path, "w") as f:
         json.dump(data, f, indent=2)

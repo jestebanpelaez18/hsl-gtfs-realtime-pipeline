@@ -32,7 +32,7 @@ def run_extractor():
     run_all_feed(output_dir)
 
 def upload_latest_vehicle_positions():
-    raw_data_dir = "/opt/airflow/data/raw"
+    raw_data_dir = "/opt/airflow/data/raw/vehicle_position"
 
     # Find the latest vehicle positions file
     vehicle_files = [f for f in os.listdir(raw_data_dir) if f.startswith("vehicle_position_") and f.endswith(".json")]
