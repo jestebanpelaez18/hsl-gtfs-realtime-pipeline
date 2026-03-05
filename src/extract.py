@@ -24,27 +24,21 @@ def parse_feed(feed):
 
 
 def save_feed(data, feed_type, output_dir):
-    ''' Saves parsed GTFS data to a timestamped JSON file '''
+    """Saves parsed GTFS entities as JSON Lines (one JSON object per line)."""
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     output_dir_final = os.path.join(output_dir, feed_type)
     os.makedirs(output_dir_final, exist_ok=True)
-    file_path = os.path.join(output_dir_final, f"{feed_type}_{timestamp}.json")
+
+    file_path = os.path.join(output_dir_final, f"{feed_type}_{timestamp}.jsonl")
 
     with open(file_path, "w") as f:
-        json.dump(data, f, indent=2)
+        for record in data:
+            f.write(json.dumps(record) + "\n")
 
     print(f"✅ Saved {len(data)} records to {file_path}")
-
-
-def extract_and_save(url, feed_type, output_dir):
-    feed = fetch_gtfs_feed(url)
-    data = parse_feed(feed)
-    save_feed(data, feed_type, output_dir)
-
-
 def run_all_feed(output_dir):
     FEED_URL = {
-        "vehicle_position": 'https://realtime.hsl.fi/realtime/vehicle-positions/v2/hsl',
+        "vehicle_positions": 'https://realtime.hsl.fi/realtime/vehicle-positions/v2/hsl',
         "trip_updates": 'https://realtime.hsl.fi/realtime/trip-updates/v2/hsl'
     }
     for feed_type, url in FEED_URL.items():

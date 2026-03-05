@@ -32,10 +32,10 @@ def run_extractor():
     run_all_feed(output_dir)
 
 def upload_latest_vehicle_positions():
-    raw_data_dir = "/opt/airflow/data/raw/vehicle_position"
+    raw_data_dir = "/opt/airflow/data/raw/vehicle_positions"
 
     # Find the latest vehicle positions file
-    vehicle_files = [f for f in os.listdir(raw_data_dir) if f.startswith("vehicle_position_") and f.endswith(".json")]
+    vehicle_files = [f for f in os.listdir(raw_data_dir) if f.startswith("vehicle_positions_") and f.endswith(".jsonl")]
     if not vehicle_files:
         raise FileNotFoundError("No vehicle position files found.")
 
