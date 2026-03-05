@@ -71,6 +71,8 @@ services:
       - PATH=/opt/spark/bin:/opt/spark/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     volumes:
       - ./:/app
+      - ./spark_jobs:/app/spark_jobs
+      - ./jars:/app/jars
     working_dir: /app
     depends_on:
       - warehouse-postgres
