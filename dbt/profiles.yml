@@ -1,0 +1,12 @@
+hsl_pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: warehouse-postgres
+      port: 5432
+      user: hsl_user
+      password: hsl_pass
+      dbname: hsl_db
+      schema: gold
+      threads: 1

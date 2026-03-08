@@ -1,0 +1,11 @@
+name: hsl_pipeline
+version: "1.0.0"
+profile: hsl_pipeline
+
+model-paths: ["models"]
+
+models:
+  hsl_pipeline:
+    gold:
+      +materialized: table
+      +schema: gold

@@ -77,6 +77,17 @@ services:
     depends_on:
       - warehouse-postgres
     command: ["bash", "-lc", "tail -f /dev/null"]
+  dbt:
+    build: ./docker/dbt
+    container_name: hsl_dbt
+    depends_on:
+      - warehouse-postgres
+    environment:
+      DBT_PROFILES_DIR: /app/dbt
+    volumes:
+      - ./dbt:/app/dbt
+    working_dir: /app/dbt
+    command: ["tail", "-f", "/dev/null"]
 volumes:
   airflow-postgres-db-volume:
   warehouse-postgres-db-volume:
