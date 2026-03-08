@@ -41,4 +41,16 @@ check-trip:
 	@echo "Checking trip_updates row count"
 	psql postgresql://hsl_user:hsl_pass@localhost:5433/hsl_db -c "SELECT COUNT(*) FROM silver.trip_updates;"
 
-.PHONY: all clean fclean re logs trigger spark-vehicle spark-trip check-vehicle check-trip
+dbt-run:
+	@echo "Running dbt models (Gold layer)"
+	docker compose exec dbt dbt run
+
+dbt-test:
+	@echo "Running dbt tests"
+	docker compose exec dbt dbt test
+
+dbt-debug:
+	@echo "Checking dbt connection"
+	docker compose exec dbt dbt debug
+
+.PHONY: all clean fclean re logs trigger spark-vehicle spark-trip check-vehicle check-trip dbt-run dbt-test dbt-debug

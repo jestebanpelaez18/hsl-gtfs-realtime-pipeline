@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: gold_route_delay_daily
+    description: "Daily operational activity summary per route"
+    columns:
+      - name: event_date
+        tests:
+          - not_null
+      - name: route_id
+        tests:
+          - not_null
+      - name: total_stop_updates
+        tests:
+          - not_null
+
+  - name: gold_vehicle_activity_hourly
+    description: "Hourly vehicle activity summary per route"
+    columns:
+      - name: event_date
+        tests:
+          - not_null
+      - name: route_id
+        tests:
+          - not_null
+      - name: active_vehicles
+        tests:
+          - not_null
+
+  - name: gold_data_quality_issues_daily
+    description: "Daily data quality monitoring report"
+    columns:
+      - name: event_date
+        tests:
+          - not_null
+      - name: vp_total_records
+        tests:
+          - not_null
+      - name: tu_total_records
+        tests:
+          - not_null
