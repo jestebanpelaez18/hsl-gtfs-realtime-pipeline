@@ -1,9 +1,24 @@
+# Environment
 .env
+
+# Notes and logs
 notes/
 logs/
+
+# Python cache
 __pycache__/
 *.py[cod]
 *.pyo
 *.egg-info/
 .Python
-.data/raw/
+
+# Data files (Bronze layer - no subir al repo)
+data/raw/
+
+# dbt
+dbt/logs/
+dbt/.user.yml
+dbt/target/
+
+# Databricks (archivos viejos que no aplican)
+databricks_01_vehicle_positions.md
