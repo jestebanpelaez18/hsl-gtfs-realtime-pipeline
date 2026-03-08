@@ -9,3 +9,7 @@ models:
     gold:
       +materialized: table
       +schema: gold
+
+dispatch:
+  - macro_namespace: dbt
+    search_order: ['hsl_pipeline', 'dbt']

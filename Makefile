@@ -18,6 +18,7 @@ logs:
 
 trigger:
 	@echo "Triggering DAG: gtfs_realtime_dag"
+	docker compose exec airflow-webserver airflow dags unpause gtfs_realtime_dag
 	docker compose exec airflow-webserver airflow dags trigger gtfs_realtime_dag
 
 spark-vehicle:

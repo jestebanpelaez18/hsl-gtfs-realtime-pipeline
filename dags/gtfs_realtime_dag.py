@@ -20,6 +20,7 @@ dag = DAG(
     default_args=default_args,
     schedule_interval=None,
     catchup=False,
+    is_paused_upon_creation=False,
 )
 
 def run_extractor():
