@@ -64,7 +64,7 @@ services:
       - warehouse-postgres-db-volume:/var/lib/postgresql/data
       - ./sql:/docker-entrypoint-initdb.d
   spark:
-    image: apache/spark:3.5.1
+    build: ./docker/spark
     container_name: hsl_spark
     environment:
       - SPARK_MODE=client

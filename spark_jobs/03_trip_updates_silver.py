@@ -8,6 +8,7 @@ from pyspark.sql.functions import (
     explode
 )
 import os
+import psycopg2
 
 JDBC_URL = os.getenv("WAREHOUSE_JDBC_URL", "jdbc:postgresql://warehouse-postgres:5432/hsl_db")
 DB_USER = os.getenv("WAREHOUSE_DB_USER", "hsl_user")
@@ -75,6 +76,26 @@ def main():
         "raw_id"
     )
 
+
+    # Get the dates present in this batch
+    dates = [row.event_date for row in df_out.select("event_date").distinct().collect()]
+
+    # Delete existing data for those dates before inserting (idempotency)
+    conn = psycopg2.connect(
+        host="warehouse-postgres",
+        port=5432,
+        dbname="hsl_db",
+        user=DB_USER,
+        password=DB_PASS
+    )
+    cursor = conn.cursor()
+    for date in dates:
+        cursor.execute(f"DELETE FROM {DB_TABLE} WHERE event_date = %s", (date,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    # Now insert fresh data
     (
         df_out.write
         .format("jdbc")
