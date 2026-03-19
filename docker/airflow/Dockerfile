@@ -26,6 +26,7 @@ COPY requirements.txt /requirements.txt
 
 USER airflow
 RUN python -m pip install --upgrade pip
+RUN pip install --upgrade psycopg2-binary
 RUN pip install --no-cache-dir -r /requirements.txt
 
 COPY entrypoint.sh /entrypoint.sh

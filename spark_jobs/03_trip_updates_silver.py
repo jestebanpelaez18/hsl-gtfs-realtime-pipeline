@@ -14,8 +14,7 @@ JDBC_URL = os.getenv("WAREHOUSE_JDBC_URL", "jdbc:postgresql://warehouse-postgres
 DB_USER = os.getenv("WAREHOUSE_DB_USER", "hsl_user")
 DB_PASS = os.getenv("WAREHOUSE_DB_PASS", "hsl_pass")
 DB_TABLE = "silver.trip_updates"
-
-RAW_PATH = "/app/data/raw/trip_updates/*.jsonl"
+RAW_PATH = os.getenv("RAW_DATA_PATH", "/opt/airflow/data/raw/trip_updates/*.jsonl")
 
 def main():
     spark = (

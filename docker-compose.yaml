@@ -25,8 +25,12 @@ services:
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
-      - ./src:/opt/airflow/src 
+      - ./src:/opt/airflow/src
       - ./data:/opt/airflow/data
+      - ./spark_jobs:/opt/airflow/spark_jobs
+      - ./jars:/opt/airflow/jars
+      - ./dbt:/opt/airflow/dbt
+      - /var/run/docker.sock:/var/run/docker.sock
     command: webserver
     user: "${AIRFLOW_UID}:0"
 
@@ -43,8 +47,12 @@ services:
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
-      - ./src:/opt/airflow/src 
+      - ./src:/opt/airflow/src
       - ./data:/opt/airflow/data
+      - ./spark_jobs:/opt/airflow/spark_jobs
+      - ./jars:/opt/airflow/jars
+      - ./dbt:/opt/airflow/dbt
+      - /var/run/docker.sock:/var/run/docker.sock
     command: scheduler
     user: "${AIRFLOW_UID}:0"
 

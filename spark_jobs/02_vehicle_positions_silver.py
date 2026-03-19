@@ -7,8 +7,7 @@ JDBC_URL = os.getenv("WAREHOUSE_JDBC_URL", "jdbc:postgresql://warehouse-postgres
 DB_USER = os.getenv("WAREHOUSE_DB_USER", "hsl_user")
 DB_PASS = os.getenv("WAREHOUSE_DB_PASS", "hsl_pass")
 DB_TABLE = "silver.vehicle_positions"
-
-RAW_PATH = "/app/data/raw/vehicle_positions/*"
+RAW_PATH = os.getenv("RAW_DATA_PATH", "/opt/airflow/data/raw/vehicle_positions/*")
 
 def main():
     spark = (

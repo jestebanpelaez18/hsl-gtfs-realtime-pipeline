@@ -1,6 +1,7 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
+from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
 from airflow.utils.dates import days_ago
 from datetime import timedelta
 import sys
@@ -33,14 +34,27 @@ extract_data = PythonOperator(
     dag=dag,
 )
 
-run_spark_vehicle_positions = BashOperator(
-    task_id="run_spark_vehicle_positions",
-    bash_command="""
-    spark-submit \
-      --jars /app/jars/postgresql-42.7.3.jar \
-      /app/spark_jobs/02_vehicle_positions_silver.py
-    """,
+run_spark_vehicle_positions = SparkSubmitOperator(
+    task_id="spark_vehicle_positions",
+    application="/opt/airflow/spark_jobs/02_vehicle_positions_silver.py",
+    conn_id="spark_default",
+    jars="/opt/airflow/jars/postgresql-42.7.3.jar",
     dag=dag,
 )
 
-extract_data >> run_spark_vehicle_positions
+run_spark_trip_updates = SparkSubmitOperator(
+    task_id="spark_trip_updates",
+    application="/opt/airflow/spark_jobs/03_trip_updates_silver.py",
+    conn_id="spark_default",
+    jars="/opt/airflow/jars/postgresql-42.7.3.jar",
+    dag=dag,
+)
+
+
+run_dbt = BashOperator(
+    task_id="dbt_run",
+    bash_command="docker exec hsl_dbt dbt run --profiles-dir /app/dbt",
+    dag=dag,
+)
+
+extract_data >> run_spark_vehicle_positions >> run_spark_trip_updates >> run_dbt
