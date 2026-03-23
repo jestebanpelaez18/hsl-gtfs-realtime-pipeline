@@ -1,66 +1,136 @@
-# HSL GTFS Realtime Pipeline
+# HSL GTFS Realtime Production-Style Data Pipeline
 
-This project is a data engineering pipeline built with **Apache Airflow**, **PySpark**, and **Databricks** to process real-time public transportation data from **HSL (Helsinki Regional Transport Authority)**.
+This project is an end-to-end **production-style data engineering pipeline** built with **Apache Airflow**, **PySpark**, **dbt**, and **PostgreSQL** to process real-time public transportation data from **HSL (Helsinki Regional Transport Authority)**.
 
-The goal is to extract, clean, transform, and load (ETL) GTFS Realtime data to enable insights about public transit patterns, vehicle delays, and system performance.  
-The pipeline follows a modern data lake architecture using **Delta Lake**.
+The goal of this project is not only to ingest and transform GTFS Realtime data, but to simulate how a real-world data platform operates — including:
+
+- Idempotent data processing
+- Backfill support
+- Data validation checks
+- Structured logging and observability
+- Gold-layer analytical outputs
+
+The pipeline runs fully locally using **Docker Compose**, without manual intervention.
 
 ---
 
-## Project Architecture
+## Project Goal
 
-```mermaid
-graph LR
-    A[HSL API GTFS] -->|Extract & Parse| B(Apache Airflow)
-    B -->|Save JSON| C[Raw Data / Workspace]
-    C -->|"Hybrid Ingestion (Python/Pandas)"| D[Databricks Spark Cluster]
-    D -->|Transform & Clean| E[(Delta Lake Silver Table)]
-    E -->|Analysis & Visualization| F[Databricks Notebooks]
-```
-**Note on Infrastructur**e: This project is deployed on **Databricks Community Edition**. Due to network/mounting restrictions in the free tier, the pipeline uses a custom local file ingestion strategy (Python os + Pandas) to bridge the gap between raw data upload and Spark processing, simulating a cloud storage m
+Build a reliable and reproducible data pipeline that ingests GTFS Realtime feeds and produces daily operational metrics about Helsinki public transport, including:
+
+- Route activity statistics
+- Vehicle activity per hour
+- Data quality monitoring reports
 
 ---
 
 ## Project Overview
 
-- **Data Source**: [HSL Open Data](https://www.hsl.fi/en/open-data)
-- **Pipeline Tools**: Apache Airflow, PySpark, Databricks, Delta Lake
-- **Format**: GTFS Realtime (Protocol Buffers → JSON)
-- **Purpose**: Learn and practice real-world data engineering using public transit data
+- **Data Source**: [HSL Open Data – GTFS Realtime](https://www.hsl.fi/en/open-data)
+- **Feeds Used**:
+  - Vehicle Positions
+  - Trip Updates
+- **Data Format**: GTFS Realtime (Protocol Buffers → JSON)
+- **Processing Stack**: Apache Airflow, PySpark, PostgreSQL, dbt
+- **Architecture Pattern**: Bronze → Silver → Gold layered design
 
-## Features
+This project simulates a real-world data engineering workflow by ingesting public transit event data, transforming it with Spark, modeling analytical outputs with dbt, and applying data validation and operational best practices such as idempotent processing and backfills.
 
-### Extraction (Airflow)
-- Fetches GTFS Realtime feeds:
-  - **Vehicle Positions**
-  - **Trip Updates**
-- Parses Protobuf (`.pb`) into JSON using `gtfs-realtime-bindings`
-- Stores raw data under `data/raw/`
-- Containerized with **Docker + Docker Compose**
+---
 
-### Transformation (Databricks + PySpark + Delta Lake)
-A dedicated Databricks transformation layer processes the extracted JSON using a **hybrid reading approach**:
+## Architecture Overview
 
-- **Dynamic File Detection**: Uses Python `os` library to detect the latest uploaded file in the Workspace.
-- **Robust Ingestion**: Reads JSON via **Pandas** first to handle complex nested structures and bypass file system locks, then converts to Spark DataFrame.
-- **Data Cleaning**:
-  - Extracts nested fields (`vehicle`, `trip`, `position`)
-  - Converts UNIX timestamps into proper Spark timestamps
-  - Cleans coordinates and removes duplicates
-- **Storage**: Loads cleaned data into a **Delta Lake Silver table** (`hsl_demo.vehicle_positions_silver`) partitioned by `event_date`.
+```mermaid
+graph LR
+    A["HSL GTFS-RT API"] --> B["Airflow Extract Task"]
+    B --> C["Raw JSON Storage (Bronze)"]
+    C --> D["PySpark Jobs (Silver Transformation)"]
+    D --> E[("PostgreSQL Silver Tables")]
+    E --> F["dbt Models (Gold Layer)"]
+    F --> G[("PostgreSQL Gold Tables")]
+    G --> H["Data Quality & Metrics Reporting"]
+```
+
+---
+
+## Pipeline in Action
+
+### Airflow DAG — Full Pipeline Orchestration
+
+![Airflow DAG](docs/images/airflow_dag.png)
+
+### Airflow Graph View
+
+![Airflow Graph](docs/images/airflow_graph.png)
+
+### dbt Run — Gold Layer Models
+
+![dbt Run](docs/images/dbt_run.png)
+
+---
+
+## Data Layers
+
+### Bronze (Raw Layer)
+* **Raw GTFS Realtime feeds** stored as JSONL files
+* **Immutable** raw ingestion
+* Supports **historical reprocessing**
+
+### Silver (Cleaned Layer)
+* Processed with **PySpark**
+* Flattened nested **Protobuf** structures
+* Timestamp normalization
+* Idempotent writes (delete-then-insert by date)
+
+**Tables:**
+* `silver.vehicle_positions`
+* `silver.trip_updates`
+
+### Gold (Analytics Layer)
+* Modeled using **dbt**
+* Tested with dbt schema tests
+
+**Analytical outputs:**
+* `gold.gold_route_delay_daily` — daily operational activity per route
+* `gold.gold_vehicle_activity_hourly` — vehicle activity aggregated by hour
+* `gold.gold_data_quality_issues_daily` — daily data quality monitoring report
+
+---
+
+## Production Features
+
+### Idempotency
+The pipeline supports **safe reprocessing** of specific execution dates without creating duplicate records. Before each load, existing records for that date are deleted and replaced with fresh data.
+
+### Backfills
+**Airflow** supports date-based backfills via DAG parameters.
+
+### Data Quality
+Validation checks include:
+* **Not-null** critical fields
+* **Coordinate range** validation (bounding box of Helsinki)
+* **Invalid speed** detection
+* **Arrival/departure consistency** checks
+* **Record count** monitoring per day
+
+Quality results are stored in `gold.gold_data_quality_issues_daily` and tested via dbt schema tests.
+
+### Observability
+* **Structured logging** via Airflow task logs
+* **Row count tracking** per stage
+* **Retry strategy** configured in Airflow default args
 
 ---
 
 ## Tech Stack
 
-- **Apache Airflow**
-- **PySpark**
-- **Databricks (Free Edition)**
-- **Delta Lake**
-- **Docker & Docker Compose**
-- **Python 3.7+**
-- **gtfs-realtime-bindings**
-- **Protobuf, JSON, REST APIs**
+* **Apache Airflow 2.5.1** (orchestration)
+* **PySpark 3.5.1** (data processing)
+* **PostgreSQL 16** (analytical storage)
+* **dbt-postgres 1.8.0** (data modeling & testing)
+* **Docker & Docker Compose** (containerized environment)
+* **Python 3.7+**
+* **gtfs-realtime-bindings** (Protobuf parsing)
 
 ---
 
@@ -69,22 +139,32 @@ A dedicated Databricks transformation layer processes the extracted JSON using a
 ```bash
 hsl-gtfs-realtime-pipeline/
 ├── dags/                     # Airflow DAGs
-├── src/                      # Core extraction logic
-├── data/raw/                 # Raw GTFS data exported by Airflow
-├── databricks/               # PySpark notebooks (Delta Lake processing)
-│   └── 01_vehicle_positions_cleaning.ipynb
-├── docs/                     # Project documentation
-│   └── databricks_01_vehicle_positions.md
-├── docker/airflow/           # Airflow Dockerfile + entrypoint
+├── src/                      # Extraction logic (HSL API)
+├── spark_jobs/               # PySpark transformation scripts
+├── dbt/                      # dbt project (gold models & tests)
+│   ├── models/
+│   │   ├── gold/             # Gold layer SQL models
+│   │   └── sources.yml       # Silver source definitions
+│   ├── macros/               # Custom dbt macros
+│   ├── profiles.yml          # dbt connection config
+│   └── dbt_project.yml       # dbt project config
+├── sql/                      # Database initialization scripts
+├── docker/
+│   ├── airflow/              # Airflow Dockerfile & entrypoint
+│   ├── dbt/                  # dbt Dockerfile
+│   └── spark/                # Spark Dockerfile
+├── docs/
+│   └── images/               # Screenshots for README
+├── data/raw/                 # Bronze layer (gitignored)
+├── jars/                     # PostgreSQL JDBC driver
 ├── docker-compose.yaml
 ├── requirements.txt
 └── Makefile
 ```
+
 ---
 
 ## Installation
-
-Follow these steps to set up and run the project using Docker and Docker Compose. The `Makefile` is provided to streamline the process.
 
 ### 1. Prerequisites
 
@@ -95,8 +175,6 @@ Make sure you have the following installed:
 
 ### 2. Clone the Repository
 
-First, clone the repository to your local machine:
-
 ```bash
 git clone https://github.com/jestebanpelaez18/hsl-gtfs-realtime-pipeline.git
 cd hsl-gtfs-realtime-pipeline
@@ -104,38 +182,102 @@ cd hsl-gtfs-realtime-pipeline
 
 ### 3. Build and Start the Project
 
-Use the Makefile to handle the setup, build, and start processes. Run:
-
 ```bash
 make
 ```
-This command will:
-- Build and start the Docker containers defined in docker-compose.yml
-- Build and start Airflow
-`
+
+This command will build and start all Docker containers:
+- `airflow-webserver` & `airflow-scheduler`
+- `airflow-postgres` (Airflow metadata DB)
+- `warehouse-postgres` (data warehouse)
+- `spark` (PySpark processing)
+- `dbt` (Gold layer modeling)
+
 ### 4. Visit Airflow UI
 
 * URL: [http://localhost:8080](http://localhost:8080)
 * Default login: `admin / admin`
 
-### 5. Trigger the DAG
+### 5. Trigger the Pipeline
 
 Manually in the UI or run:
+
 ```bash
 make trigger
 ```
 
-### 6. Databricks Transformation Layer (Silver) 🥈
+The pipeline will execute in this order:
 
-1. Upload the JSON file generated in `data/raw/` to your Databricks Workspace.
-2. Run the `01_vehicle_positions_cleaning.ipynb` notebook.
-3. The logic will automatically pick up the latest file, process it, and save it as a **Delta Table**.
+1. **Extract** GTFS Realtime feeds from HSL API
+2. **Store** raw JSON files (Bronze layer)
+3. **Transform** with PySpark → Silver tables
+4. **Model** with dbt → Gold tables
+5. **Validate** data quality checks
+
+---
+
+## Makefile Commands
+
+| Command | Description |
+|---|---|
+| `make` | Build and start all containers |
+| `make trigger` | Trigger the Airflow DAG |
+| `make spark-vehicle` | Run vehicle positions Spark job manually |
+| `make spark-trip` | Run trip updates Spark job manually |
+| `make dbt-run` | Run dbt gold models manually |
+| `make dbt-test` | Run dbt data quality tests |
+| `make check-vehicle` | Check silver.vehicle_positions row count |
+| `make check-trip` | Check silver.trip_updates row count |
+| `make clean` | Stop and remove containers and volumes |
+
+---
+
+## Example Analytical Queries
+
+```sql
+-- Top 10 most active routes today
+SELECT route_id, SUM(total_stop_updates) AS total_updates
+FROM gold.gold_route_delay_daily
+WHERE event_date = CURRENT_DATE
+GROUP BY route_id
+ORDER BY total_updates DESC
+LIMIT 10;
+
+-- Vehicle activity by hour for a specific route
+SELECT hour_of_day, active_vehicles, avg_speed_ms * 3.6 AS avg_speed_kmh
+FROM gold.gold_vehicle_activity_hourly
+WHERE route_id = '1001'
+  AND event_date = CURRENT_DATE
+ORDER BY hour_of_day;
+
+-- Data quality summary
+SELECT event_date, vp_invalid_coordinates, tu_arrival_after_departure
+FROM gold.gold_data_quality_issues_daily
+ORDER BY event_date DESC;
+```
 
 ---
 
 ## Future Improvements
 
-* **Cloud Integration**: Migrate manual file ingestion to automated cloud storage mounting (Azure Blob Storage / S3) once a Standard Cluster is available.
-* **Service Alerts**: Add support for the Service Alerts feed.
-* **Medallion Architecture**: Complete the pipeline with Bronze (Raw Ingestion) and Gold (Aggregated Analytics) layers.
-* **Automation**: Schedule Databricks jobs via Airflow `DatabricksSubmitRunOperator`.
+* **pgAdmin** integration for visual database exploration
+* **dbt docs** for interactive model documentation and lineage graph
+* **Scheduled** DAG runs (e.g. every 30 minutes)
+* **Cloud storage** integration (Azure Blob / S3)
+* **Incremental** dbt models
+* **ML training pipeline** on delay prediction
+* **Dashboard integration** (Metabase / Superset)
+
+---
+
+## Learning Objectives
+
+This project demonstrates practical knowledge in:
+
+* **End-to-end** data pipeline design
+* **Spark-based** transformations on nested JSON/Protobuf data
+* **Data modeling** with dbt (Bronze → Silver → Gold)
+* **Production reliability** concepts (idempotency, retries, backfills)
+* **Containerized** data engineering environments
+* **Data quality** monitoring and validation
+* **Pipeline orchestration** with Apache Airflow

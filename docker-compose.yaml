@@ -1,52 +1,102 @@
 
 services:
-  postgres:
+  airflow-postgres:
     image: postgres:13
     environment:
       POSTGRES_USER: airflow
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow
     volumes:
-      - postgres-db-volume:/var/lib/postgresql/data
+      - airflow-postgres-db-volume:/var/lib/postgresql/data
 
   airflow-webserver:
     build: ./docker/airflow
     depends_on:
-      - postgres
+      - airflow-postgres
     env_file:
       - ./.env
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres/airflow
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
     ports:
       - "8080:8080"
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
-      - ./src:/opt/airflow/src 
+      - ./src:/opt/airflow/src
       - ./data:/opt/airflow/data
+      - ./spark_jobs:/opt/airflow/spark_jobs
+      - ./jars:/opt/airflow/jars
+      - ./dbt:/opt/airflow/dbt
+      - /var/run/docker.sock:/var/run/docker.sock
     command: webserver
     user: "${AIRFLOW_UID}:0"
 
   airflow-scheduler:
     build: ./docker/airflow
     depends_on:
-      - postgres
+      - airflow-postgres
     env_file:
       - ./.env
     environment:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres/airflow
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@airflow-postgres/airflow
     volumes:
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
-      - ./src:/opt/airflow/src 
+      - ./src:/opt/airflow/src
       - ./data:/opt/airflow/data
+      - ./spark_jobs:/opt/airflow/spark_jobs
+      - ./jars:/opt/airflow/jars
+      - ./dbt:/opt/airflow/dbt
+      - /var/run/docker.sock:/var/run/docker.sock
     command: scheduler
     user: "${AIRFLOW_UID}:0"
 
+  warehouse-postgres:
+    image: postgres:16
+    container_name: hsl_warehouse_postgres
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    environment:
+      POSTGRES_USER: ${WAREHOUSE_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${WAREHOUSE_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${WAREHOUSE_POSTGRES_DB}
+    ports:
+      - "5433:5432"
+    volumes:
+      - warehouse-postgres-db-volume:/var/lib/postgresql/data
+      - ./sql:/docker-entrypoint-initdb.d
+  spark:
+    build: ./docker/spark
+    container_name: hsl_spark
+    environment:
+      - SPARK_MODE=client
+      - SPARK_HOME=/opt/spark
+      - PATH=/opt/spark/bin:/opt/spark/sbin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    volumes:
+      - ./:/app
+      - ./spark_jobs:/app/spark_jobs
+      - ./jars:/app/jars
+    working_dir: /app
+    depends_on:
+      - warehouse-postgres
+    command: ["bash", "-lc", "tail -f /dev/null"]
+  dbt:
+    build: ./docker/dbt
+    container_name: hsl_dbt
+    depends_on:
+      - warehouse-postgres
+    environment:
+      DBT_PROFILES_DIR: /app/dbt
+    volumes:
+      - ./dbt:/app/dbt
+    working_dir: /app/dbt
+    command: ["tail", "-f", "/dev/null"]
 volumes:
-  postgres-db-volume:
+  airflow-postgres-db-volume:
+  warehouse-postgres-db-volume:
