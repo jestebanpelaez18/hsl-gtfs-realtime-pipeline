@@ -3,10 +3,10 @@ hsl_pipeline:
   outputs:
     dev:
       type: postgres
-      host: warehouse-postgres
+      host: "{{ env_var('WAREHOUSE_HOST', 'warehouse-postgres') }}"
       port: 5432
-      user: hsl_user
-      password: hsl_pass
-      dbname: hsl_db
+      user: "{{ env_var('WAREHOUSE_DB_USER', 'hsl_user') }}"
+      password: "{{ env_var('WAREHOUSE_DB_PASS', 'hsl_pass') }}"
+      dbname: "{{ env_var('WAREHOUSE_DB_NAME', 'hsl_db') }}"
       schema: gold
       threads: 1

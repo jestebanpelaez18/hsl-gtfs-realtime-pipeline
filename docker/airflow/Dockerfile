@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk-arm64"
+RUN ln -s /usr/lib/jvm/java-11-openjdk-$(dpkg --print-architecture) /usr/lib/jvm/java-11-openjdk
+ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 ENV SPARK_HOME="/opt/spark"
 ENV PATH="${JAVA_HOME}:${SPARK_HOME}/bin:${SPARK_HOME}/sbin:${PATH}"
 
