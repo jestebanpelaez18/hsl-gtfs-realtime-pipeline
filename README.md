@@ -53,6 +53,22 @@ graph LR
 
 ---
 
+## Pipeline in Action
+
+### Airflow DAG — Full Pipeline Orchestration
+
+![Airflow DAG](docs/images/airflow_dag.png)
+
+### Airflow Graph View
+
+![Airflow Graph](docs/images/airflow_graph.png)
+
+### dbt Run — Gold Layer Models
+
+![dbt Run](docs/images/dbt_run.png)
+
+---
+
 ## Data Layers
 
 ### Bronze (Raw Layer)
@@ -137,6 +153,8 @@ hsl-gtfs-realtime-pipeline/
 │   ├── airflow/              # Airflow Dockerfile & entrypoint
 │   ├── dbt/                  # dbt Dockerfile
 │   └── spark/                # Spark Dockerfile
+├── docs/
+│   └── images/               # Screenshots for README
 ├── data/raw/                 # Bronze layer (gitignored)
 ├── jars/                     # PostgreSQL JDBC driver
 ├── docker-compose.yaml
@@ -242,9 +260,11 @@ ORDER BY event_date DESC;
 
 ## Future Improvements
 
+* **pgAdmin** integration for visual database exploration
+* **dbt docs** for interactive model documentation and lineage graph
+* **Scheduled** DAG runs (e.g. every 30 minutes)
 * **Cloud storage** integration (Azure Blob / S3)
 * **Incremental** dbt models
-* **Scheduled** DAG runs (e.g. every 30 minutes)
 * **ML training pipeline** on delay prediction
 * **Dashboard integration** (Metabase / Superset)
 
