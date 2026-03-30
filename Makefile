@@ -12,6 +12,14 @@ fclean: clean
 
 re: fclean all
 
+up:
+	@echo "Starting containers (no rebuild)"
+	docker compose up -d
+
+down:
+	@echo "Stopping containers"
+	docker compose down
+
 logs:
 	@echo "Tailing logs..."
 	docker compose logs -f
@@ -53,4 +61,10 @@ dbt-debug:
 	@echo "Checking dbt connection"
 	docker compose exec dbt dbt debug
 
-.PHONY: all clean fclean re logs trigger spark-vehicle spark-trip check-vehicle check-trip dbt-run dbt-test dbt-debug
+dbt-docs:
+	@echo "Generating and serving dbt docs"
+	docker compose exec dbt dbt docs generate
+	docker compose exec -d dbt dbt docs serve --port 8081 --no-browser
+	@echo "dbt docs available at http://localhost:8081"
+
+.PHONY: all clean fclean re logs trigger spark-vehicle spark-trip check-vehicle check-trip dbt-run dbt-test dbt-debug up down dbt-docs

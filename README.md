@@ -55,7 +55,7 @@ graph LR
 
 ## Pipeline in Action
 
-### Airflow DAG — Full Pipeline Orchestration
+### Airflow DAG — Scheduled Every 30 Minutes
 
 ![Airflow DAG](docs/images/airflow_dag.png)
 
@@ -66,6 +66,14 @@ graph LR
 ### dbt Run — Gold Layer Models
 
 ![dbt Run](docs/images/dbt_run.png)
+
+### pgAdmin — Data Warehouse Explorer
+
+![pgAdmin](docs/images/pgadmin_silver.png)
+
+### dbt Docs — Model Lineage Graph
+
+![dbt Lineage](docs/images/dbt_lineage.png)
 
 ---
 
@@ -120,6 +128,13 @@ Quality results are stored in `gold.gold_data_quality_issues_daily` and tested v
 * **Row count tracking** per stage
 * **Retry strategy** configured in Airflow default args
 
+### Scheduling
+The pipeline runs automatically **every 30 minutes** via Airflow cron schedule (`*/30 * * * *`), ingesting fresh data from the HSL API without manual intervention.
+
+### Data Exploration
+* **pgAdmin** available at `http://localhost:5050` for visual database exploration
+* **dbt docs** available at `http://localhost:8081` for interactive model documentation and lineage graph
+
 ---
 
 ## Tech Stack
@@ -151,8 +166,9 @@ hsl-gtfs-realtime-pipeline/
 ├── sql/                      # Database initialization scripts
 ├── docker/
 │   ├── airflow/              # Airflow Dockerfile & entrypoint
-│   ├── dbt/                  # dbt Dockerfile
-│   └── spark/                # Spark Dockerfile
+│   ├── dbt/                  # dbt Dockerfile & start script
+│   ├── spark/                # Spark Dockerfile
+│   └── pgadmin/              # pgAdmin server config
 ├── docs/
 │   └── images/               # Screenshots for README
 ├── data/raw/                 # Bronze layer (gitignored)
@@ -191,12 +207,18 @@ This command will build and start all Docker containers:
 - `airflow-postgres` (Airflow metadata DB)
 - `warehouse-postgres` (data warehouse)
 - `spark` (PySpark processing)
-- `dbt` (Gold layer modeling)
+- `dbt` (Gold layer modeling + docs server)
+- `pgadmin` (database explorer)
 
-### 4. Visit Airflow UI
+### 4. Access the Services
 
-* URL: [http://localhost:8080](http://localhost:8080)
-* Default login: `admin / admin`
+| Service | URL | Credentials |
+|---|---|---|
+| Airflow UI | http://localhost:8080 | admin / admin |
+| pgAdmin | http://localhost:5050 | admin@admin.com / admin |
+| dbt docs | http://localhost:8081 | - |
+
+On first login to pgAdmin, enter the warehouse password `hsl_pass` when prompted.
 
 ### 5. Trigger the Pipeline
 
@@ -221,11 +243,14 @@ The pipeline will execute in this order:
 | Command | Description |
 |---|---|
 | `make` | Build and start all containers |
-| `make trigger` | Trigger the Airflow DAG |
+| `make up` | Start containers without rebuilding |
+| `make down` | Stop containers |
+| `make trigger` | Trigger the Airflow DAG manually |
 | `make spark-vehicle` | Run vehicle positions Spark job manually |
 | `make spark-trip` | Run trip updates Spark job manually |
 | `make dbt-run` | Run dbt gold models manually |
 | `make dbt-test` | Run dbt data quality tests |
+| `make dbt-docs` | Generate and serve dbt documentation |
 | `make check-vehicle` | Check silver.vehicle_positions row count |
 | `make check-trip` | Check silver.trip_updates row count |
 | `make clean` | Stop and remove containers and volumes |
@@ -260,9 +285,6 @@ ORDER BY event_date DESC;
 
 ## Future Improvements
 
-* **pgAdmin** integration for visual database exploration
-* **dbt docs** for interactive model documentation and lineage graph
-* **Scheduled** DAG runs (e.g. every 30 minutes)
 * **Cloud storage** integration (Azure Blob / S3)
 * **Incremental** dbt models
 * **ML training pipeline** on delay prediction
