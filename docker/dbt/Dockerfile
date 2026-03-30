@@ -8,3 +8,6 @@ RUN apt-get update && apt-get install -y \
 RUN pip install dbt-postgres==1.8.0 psycopg2-binary
 
 WORKDIR /app/dbt
+
+COPY start.sh /start.sh
+RUN chmod +x /start.sh

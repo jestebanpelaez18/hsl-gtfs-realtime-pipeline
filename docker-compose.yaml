@@ -96,7 +96,9 @@ services:
     volumes:
       - ./dbt:/app/dbt
     working_dir: /app/dbt
-    command: ["tail", "-f", "/dev/null"]
+    ports:
+      - "8081:8081"
+    command: ["/start.sh"]
 
   pgadmin:  
     image: dpage/pgadmin4
