@@ -12,6 +12,14 @@ fclean: clean
 
 re: fclean all
 
+up:
+	@echo "Starting containers (no rebuild)"
+	docker compose up -d
+
+down:
+	@echo "Stopping containers"
+	docker compose down
+
 logs:
 	@echo "Tailing logs..."
 	docker compose logs -f

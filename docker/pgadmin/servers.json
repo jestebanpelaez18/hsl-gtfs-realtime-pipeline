@@ -1,0 +1,15 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "HSL Warehouse",
+      "Group": "Servers",
+      "Host": "warehouse-postgres",
+      "Port": 5432,
+      "MaintenanceDB": "hsl_db",
+      "Username": "hsl_user",
+      "Password": "hsl_pass",
+      "SSLMode": "prefer",
+      "ConnectNow": true
+    }
+  }
+}
