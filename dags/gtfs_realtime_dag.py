@@ -19,7 +19,7 @@ default_args = {
 dag = DAG(
     "gtfs_realtime_dag",
     default_args=default_args,
-    schedule_interval=None,
+    schedule_interval="*/30 * * * *",
     catchup=False,
     is_paused_upon_creation=False,
 )
