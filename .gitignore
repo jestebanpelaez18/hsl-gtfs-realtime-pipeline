@@ -21,6 +21,8 @@ dbt/.user.yml
 dbt/target/
 
 # Databricks (archivos viejos que no aplican)
-databricks_01_vehicle_positions.md*.parquet
+databricks_01_vehicle_positions.md
 
+# ML models
+*.parquet
 models/
