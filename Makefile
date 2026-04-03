@@ -67,4 +67,16 @@ dbt-docs:
 	docker compose exec -d dbt dbt docs serve --port 8081 --no-browser
 	@echo "dbt docs available at http://localhost:8081"
 
-.PHONY: all clean fclean re logs trigger spark-vehicle spark-trip check-vehicle check-trip dbt-run dbt-test dbt-debug up down dbt-docs
+spark-train:
+	@echo "Training SparkML delay prediction model"
+	docker compose exec spark spark-submit \
+		--jars /app/jars/postgresql-42.7.3.jar \
+		/app/spark_jobs/04_train_delay_model.py
+
+spark-predict:
+	@echo "Running skipped stops prediction job"
+	docker compose exec spark spark-submit \
+		--jars /app/jars/postgresql-42.7.3.jar \
+		/app/spark_jobs/05_predict_skipped_stops.py
+
+.PHONY: all clean fclean re logs trigger spark-vehicle spark-trip check-vehicle check-trip dbt-run dbt-test dbt-debug up down dbt-docs spark-train spark-predict
