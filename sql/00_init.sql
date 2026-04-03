@@ -45,3 +45,14 @@ CREATE TABLE IF NOT EXISTS gold.ml_model_results (
     train_size      BIGINT,
     test_size       BIGINT
 );
+
+CREATE TABLE IF NOT EXISTS gold.skipped_stops_predictions (
+    event_date          DATE,
+    route_id            TEXT,
+    direction_id        INT,
+    stop_id             TEXT,
+    hour_of_day         INT,
+    day_of_week         INT,
+    predicted_skipped   INT,
+    skip_probability    DOUBLE PRECISION
+);
