@@ -22,3 +22,7 @@ dbt/target/
 
 # Databricks (archivos viejos que no aplican)
 databricks_01_vehicle_positions.md
+
+# ML models
+*.parquet
+models/

@@ -38,3 +38,21 @@ CREATE TABLE IF NOT EXISTS silver.trip_updates (
 
 CREATE INDEX IF NOT EXISTS idx_vp_event_date ON silver.vehicle_positions(event_date);
 CREATE INDEX IF NOT EXISTS idx_tu_event_date ON silver.trip_updates(event_date);
+
+CREATE TABLE IF NOT EXISTS gold.ml_model_results (
+    run_ts          TIMESTAMPTZ DEFAULT now(),
+    auc_score       DOUBLE PRECISION,
+    train_size      BIGINT,
+    test_size       BIGINT
+);
+
+CREATE TABLE IF NOT EXISTS gold.skipped_stops_predictions (
+    event_date          DATE,
+    route_id            TEXT,
+    direction_id        INT,
+    stop_id             TEXT,
+    hour_of_day         INT,
+    day_of_week         INT,
+    predicted_skipped   INT,
+    skip_probability    DOUBLE PRECISION
+);

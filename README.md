@@ -49,15 +49,19 @@ graph LR
     E --> F["dbt Models (Gold Layer)"]
     F --> G[("PostgreSQL Gold Tables")]
     G --> H["Data Quality & Metrics Reporting"]
+    E --> I["SparkML Training Job"]
+    I --> J["Trained Model (Persisted)"]
+    J --> K["Prediction Job"]
+    K --> G
 ```
 
 ---
 
 ## Pipeline in Action
 
-### Airflow DAG — Scheduled Every 30 Minutes
+### Airflow — Two Orchestrated Pipelines
 
-![Airflow DAG](docs/images/airflow_dag.png)
+![Airflow DAGs](docs/images/airflow_dags.png)
 
 ### Airflow Graph View
 
@@ -103,6 +107,14 @@ graph LR
 * `gold.gold_vehicle_activity_hourly` — vehicle activity aggregated by hour
 * `gold.gold_data_quality_issues_daily` — daily data quality monitoring report
 
+### ML Layer
+* Built with **SparkML**
+* Trained on historical `silver.trip_updates` data
+
+**ML outputs:**
+* `gold.ml_model_results` — model training metrics (AUC, train/test size)
+* `gold.skipped_stops_predictions` — predicted skipped stops with probability scores
+
 ---
 
 ## Production Features
@@ -129,11 +141,21 @@ Quality results are stored in `gold.gold_data_quality_issues_daily` and tested v
 * **Retry strategy** configured in Airflow default args
 
 ### Scheduling
-The pipeline runs automatically **every 30 minutes** via Airflow cron schedule (`*/30 * * * *`), ingesting fresh data from the HSL API without manual intervention.
+Two Airflow DAGs run on independent schedules:
+* **`gtfs_realtime_dag`** — runs every 30 minutes, ingesting fresh data and updating predictions
+* **`train_model_dag`** — runs daily at 3am, retraining the SparkML model with accumulated data
 
 ### Data Exploration
 * **pgAdmin** available at `http://localhost:5050` for visual database exploration
 * **dbt docs** available at `http://localhost:8081` for interactive model documentation and lineage graph
+
+### ML Pipeline
+A **SparkML classification model** trained on historical trip data predicts which bus stops are likely to be skipped:
+* **Algorithm**: Random Forest Classifier (50 trees, max depth 5)
+* **Features**: route, direction, hour of day, day of week
+* **Target**: whether a stop will be skipped (`SKIPPED` vs normal)
+* **Result**: AUC of 0.92 on held-out test set
+* **Model persistence**: trained model saved to disk and reloaded for predictions without retraining
 
 ---
 
@@ -141,6 +163,7 @@ The pipeline runs automatically **every 30 minutes** via Airflow cron schedule (
 
 * **Apache Airflow 2.5.1** (orchestration)
 * **PySpark 3.5.1** (data processing)
+* **SparkML** (machine learning)
 * **PostgreSQL 16** (analytical storage)
 * **dbt-postgres 1.8.0** (data modeling & testing)
 * **Docker & Docker Compose** (containerized environment)
@@ -156,6 +179,11 @@ hsl-gtfs-realtime-pipeline/
 ├── dags/                     # Airflow DAGs
 ├── src/                      # Extraction logic (HSL API)
 ├── spark_jobs/               # PySpark transformation scripts
+│   ├── 02_vehicle_positions_silver.py
+│   ├── 03_trip_updates_silver.py
+│   ├── 04_train_delay_model.py
+│   └── 05_predict_skipped_stops.py
+├── models/                   # Persisted SparkML models (gitignored)
 ├── dbt/                      # dbt project (gold models & tests)
 │   ├── models/
 │   │   ├── gold/             # Gold layer SQL models
@@ -235,6 +263,13 @@ The pipeline will execute in this order:
 3. **Transform** with PySpark → Silver tables
 4. **Model** with dbt → Gold tables
 5. **Validate** data quality checks
+6. **Predict** skipped stops using the trained SparkML model
+
+To train or retrain the ML model manually:
+
+```bash
+make spark-train
+```
 
 ---
 
@@ -248,6 +283,8 @@ The pipeline will execute in this order:
 | `make trigger` | Trigger the Airflow DAG manually |
 | `make spark-vehicle` | Run vehicle positions Spark job manually |
 | `make spark-trip` | Run trip updates Spark job manually |
+| `make spark-train` | Train the SparkML delay prediction model |
+| `make spark-predict` | Run skipped stops prediction job |
 | `make dbt-run` | Run dbt gold models manually |
 | `make dbt-test` | Run dbt data quality tests |
 | `make dbt-docs` | Generate and serve dbt documentation |
@@ -279,6 +316,12 @@ ORDER BY hour_of_day;
 SELECT event_date, vp_invalid_coordinates, tu_arrival_after_departure
 FROM gold.gold_data_quality_issues_daily
 ORDER BY event_date DESC;
+
+-- Top 10 stops most likely to be skipped
+SELECT route_id, stop_id, hour_of_day, day_of_week, skip_probability
+FROM gold.skipped_stops_predictions
+ORDER BY skip_probability DESC
+LIMIT 10;
 ```
 
 ---
@@ -287,8 +330,9 @@ ORDER BY event_date DESC;
 
 * **Cloud storage** integration (Azure Blob / S3)
 * **Incremental** dbt models
-* **ML training pipeline** on delay prediction
+* **Real-time** ingestion simulation with Kafka
 * **Dashboard integration** (Metabase / Superset)
+* **Retrain pipeline** — automated model retraining as new data arrives
 
 ---
 
@@ -303,3 +347,4 @@ This project demonstrates practical knowledge in:
 * **Containerized** data engineering environments
 * **Data quality** monitoring and validation
 * **Pipeline orchestration** with Apache Airflow
+* **Machine learning** with SparkML (classification, feature engineering, model persistence)

@@ -8,6 +8,6 @@ RUN apt-get update && apt-get install -y \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install psycopg2-binary
+RUN pip3 install psycopg2-binary numpy
 
 USER spark
