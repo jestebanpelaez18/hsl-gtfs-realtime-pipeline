@@ -59,9 +59,9 @@ graph LR
 
 ## Pipeline in Action
 
-### Airflow DAG — Scheduled Every 30 Minutes
+### Airflow — Two Orchestrated Pipelines
 
-![Airflow DAG](docs/images/airflow_dag.png)
+![Airflow DAGs](docs/images/airflow_dags.png)
 
 ### Airflow Graph View
 
@@ -141,7 +141,9 @@ Quality results are stored in `gold.gold_data_quality_issues_daily` and tested v
 * **Retry strategy** configured in Airflow default args
 
 ### Scheduling
-The pipeline runs automatically **every 30 minutes** via Airflow cron schedule (`*/30 * * * *`), ingesting fresh data from the HSL API without manual intervention.
+Two Airflow DAGs run on independent schedules:
+* **`gtfs_realtime_dag`** — runs every 30 minutes, ingesting fresh data and updating predictions
+* **`train_model_dag`** — runs daily at 3am, retraining the SparkML model with accumulated data
 
 ### Data Exploration
 * **pgAdmin** available at `http://localhost:5050` for visual database exploration
@@ -261,6 +263,13 @@ The pipeline will execute in this order:
 3. **Transform** with PySpark → Silver tables
 4. **Model** with dbt → Gold tables
 5. **Validate** data quality checks
+6. **Predict** skipped stops using the trained SparkML model
+
+To train or retrain the ML model manually:
+
+```bash
+make spark-train
+```
 
 ---
 
