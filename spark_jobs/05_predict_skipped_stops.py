@@ -19,20 +19,19 @@ def main():
     model = PipelineModel.load(MODEL_PATH)
 
     print("Reading silver data...")
-    df = (
-        spark.read
-        .format("jdbc")
-        .option("url", JDBC_URL)
-        .option("dbtable", "silver.trip_updates")
-        .option("user", DB_USER)
-        .option("password", DB_PASS)
-        .option("driver", "org.postgresql.Driver")
-        .load()
-        .filter(col("route_id").isNotNull())
-        .filter(col("update_ts").isNotNull())
-        .withColumn("hour_of_day", hour(col("update_ts")))
-        .withColumn("day_of_week", dayofweek(col("update_ts")))
-    )
+    df = ( 
+    spark.read
+    .format("jdbc")
+    .option("url", JDBC_URL)
+    .option("dbtable", """
+        (SELECT * FROM silver.trip_updates 
+         WHERE update_ts >= NOW() - INTERVAL '30 days') AS recent_updates
+    """)
+    .option("user", DB_USER)
+    .option("password", DB_PASS)
+    .option("driver", "org.postgresql.Driver")
+    .load()
+)
 
     print("Making predictions...")
     predictions = model.transform(df)
