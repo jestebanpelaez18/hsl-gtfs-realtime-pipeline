@@ -57,4 +57,14 @@ run_dbt = BashOperator(
     dag=dag,
 )
 
-extract_data >> run_spark_vehicle_positions >> run_spark_trip_updates >> run_dbt
+run_spark_predict = BashOperator(
+    task_id="spark_predict_skipped_stops",
+    bash_command="""
+    docker exec hsl_spark spark-submit \
+      --jars /app/jars/postgresql-42.7.3.jar \
+      /app/spark_jobs/05_predict_skipped_stops.py
+    """,
+    dag=dag,
+)
+
+extract_data >> run_spark_vehicle_positions >> run_spark_trip_updates >> run_dbt >> run_spark_predict
