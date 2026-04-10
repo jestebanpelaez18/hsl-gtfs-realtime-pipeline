@@ -10,7 +10,7 @@ The goal of this project is not only to ingest and transform GTFS Realtime data,
 - Structured logging and observability
 - Gold-layer analytical outputs
 
-The pipeline runs fully locally using **Docker Compose**, without manual intervention.
+The pipeline runs on **Docker Compose** with the Bronze layer stored in **Azure Blob Storage**, without manual intervention.
 
 ---
 
@@ -31,7 +31,7 @@ Build a reliable and reproducible data pipeline that ingests GTFS Realtime feeds
   - Vehicle Positions
   - Trip Updates
 - **Data Format**: GTFS Realtime (Protocol Buffers → JSON)
-- **Processing Stack**: Apache Airflow, PySpark, PostgreSQL, dbt
+- **Processing Stack**: Apache Airflow, PySpark, PostgreSQL, dbt, Azure Blob Storage
 - **Architecture Pattern**: Bronze → Silver → Gold layered design
 
 This project simulates a real-world data engineering workflow by ingesting public transit event data, transforming it with Spark, modeling analytical outputs with dbt, and applying data validation and operational best practices such as idempotent processing and backfills.
@@ -43,7 +43,7 @@ This project simulates a real-world data engineering workflow by ingesting publi
 ```mermaid
 graph LR
     A["HSL GTFS-RT API"] --> B["Airflow Extract Task"]
-    B --> C["Raw JSON Storage (Bronze)"]
+    B --> C["Azure Blob Storage (Bronze)"]
     C --> D["PySpark Jobs (Silver Transformation)"]
     D --> E[("PostgreSQL Silver Tables")]
     E --> F["dbt Models (Gold Layer)"]
@@ -67,6 +67,10 @@ graph LR
 
 ![Airflow Graph](docs/images/airflow_graph.png)
 
+### Azure Blob Storage — Bronze Layer in the Cloud
+
+![Azure Blob Storage](docs/images/azure_blob_storage.png)
+
 ### dbt Run — Gold Layer Models
 
 ![dbt Run](docs/images/dbt_run.png)
@@ -84,9 +88,10 @@ graph LR
 ## Data Layers
 
 ### Bronze (Raw Layer)
-* **Raw GTFS Realtime feeds** stored as JSONL files
+* **Raw GTFS Realtime feeds** stored as JSONL files in **Azure Blob Storage**
 * **Immutable** raw ingestion
 * Supports **historical reprocessing**
+* Falls back to local storage if Azure credentials are not configured
 
 ### Silver (Cleaned Layer)
 * Processed with **PySpark**
@@ -118,6 +123,9 @@ graph LR
 ---
 
 ## Production Features
+
+### Cloud Storage
+Raw GTFS Realtime feeds are stored in **Azure Blob Storage** (`wasbs://bronze@hslpipelinestorage`). PySpark jobs read directly from Azure Blob using the `hadoop-azure` connector. The pipeline automatically falls back to local storage if Azure credentials are not configured, making it portable for local development.
 
 ### Idempotency
 The pipeline supports **safe reprocessing** of specific execution dates without creating duplicate records. Before each load, existing records for that date are deleted and replaced with fresh data.
@@ -166,6 +174,7 @@ A **SparkML classification model** trained on historical trip data predicts whic
 * **SparkML** (machine learning)
 * **PostgreSQL 16** (analytical storage)
 * **dbt-postgres 1.8.0** (data modeling & testing)
+* **Azure Blob Storage** (Bronze layer cloud storage)
 * **Docker & Docker Compose** (containerized environment)
 * **Python 3.7+**
 * **gtfs-realtime-bindings** (Protobuf parsing)
@@ -223,6 +232,26 @@ Make sure you have the following installed:
 git clone https://github.com/jestebanpelaez18/hsl-gtfs-realtime-pipeline.git
 cd hsl-gtfs-realtime-pipeline
 ```
+
+### 3. Configure Environment Variables
+
+Copy the example env file and fill in your credentials:
+
+```bash
+cp .env.example .env
+```
+
+Required variables:
+```
+WAREHOUSE_POSTGRES_USER=hsl_user
+WAREHOUSE_POSTGRES_PASSWORD=hsl_pass
+WAREHOUSE_POSTGRES_DB=hsl_db
+AZURE_STORAGE_CONNECTION_STRING=your_connection_string
+AZURE_STORAGE_ACCOUNT_NAME=your_account_name
+AZURE_STORAGE_ACCOUNT_KEY=your_account_key
+```
+
+If Azure credentials are not set, the pipeline will fall back to local storage automatically.
 
 ### 3. Build and Start the Project
 
@@ -328,7 +357,7 @@ LIMIT 10;
 
 ## Future Improvements
 
-* **Cloud storage** integration (Azure Blob / S3)
+* **Azure PostgreSQL** — migrate Silver/Gold warehouse to cloud
 * **Incremental** dbt models
 * **Real-time** ingestion simulation with Kafka
 * **Dashboard integration** (Metabase / Superset)
@@ -348,3 +377,4 @@ This project demonstrates practical knowledge in:
 * **Data quality** monitoring and validation
 * **Pipeline orchestration** with Apache Airflow
 * **Machine learning** with SparkML (classification, feature engineering, model persistence)
+* **Cloud storage** integration with Azure Blob Storage
