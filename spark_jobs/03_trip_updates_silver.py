@@ -23,6 +23,21 @@ def main():
         .getOrCreate()
     )
 
+    # Azure Blob Storage config
+    storage_account = os.getenv("AZURE_STORAGE_ACCOUNT_NAME")
+    storage_key = os.getenv("AZURE_STORAGE_ACCOUNT_KEY")
+    
+    if storage_account and storage_key:
+        spark.conf.set(
+            f"fs.azure.account.key.{storage_account}.blob.core.windows.net",
+            storage_key
+        )
+        RAW_PATH = f"wasbs://bronze@{storage_account}.blob.core.windows.net/trip_updates/*"
+        print(f"Reading from Azure Blob: {RAW_PATH}")
+    else:
+        RAW_PATH = "/app/data/raw/trip_updates/*"
+        print(f"Reading from local: {RAW_PATH}")
+
     df_raw = spark.read.json(RAW_PATH)
 
     df = (
