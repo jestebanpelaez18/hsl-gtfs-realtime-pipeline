@@ -1,5 +1,13 @@
 # HSL GTFS Realtime Production-Style Data Pipeline
 
+## What is this?
+
+This project automatically collects real-time data from Helsinki's public transport network, processes it, and produces daily reports 
+on route performance, vehicle activity, and service reliability. It also predicts which bus stops are likely to be skipped based on 
+historical patterns.
+
+--
+
 This project is an end-to-end **production-style data engineering pipeline** built with **Apache Airflow**, **PySpark**, **dbt**, and **PostgreSQL** to process real-time public transportation data from **HSL (Helsinki Regional Transport Authority)**.
 
 The goal of this project is not only to ingest and transform GTFS Realtime data, but to simulate how a real-world data platform operates — including:
